@@ -1,0 +1,43 @@
+// flags: -O4,s
+typedef struct { unsigned short id, a, b, pad; int x, y; } Desc;
+typedef struct { int x, y; } Pair;
+extern int DAT_020f3e84[];
+extern void FUN_02071d0c(void *), FUN_020c32b4(void *, int), FUN_02079160(void *, void *, int, int, int, int, int, int, int);
+extern void *FUN_02079114(void), *FUN_02077f3c(void);
+extern int FUN_02077fec(void *), FUN_020bbfa8(int), FUN_0208b514(void *);
+void FUN_02088f00(char *s) {
+    Desc d;
+    Pair pos;
+    int first[2], second[2], which, resource;
+    void *numbers;
+    FUN_02071d0c(&d);
+    d.y = 962560;
+    numbers = FUN_02079114();
+    resource = FUN_02077fec(FUN_02077f3c());
+    which = FUN_020bbfa8(512) != 0;
+    *(Pair *)first = *(Pair *)&DAT_020f3e84[11];
+    d.id = 83;
+    d.x = first[which];
+    FUN_020c32b4(&d, resource);
+    which = FUN_020bbfa8(256) != 0;
+    *(Pair *)second = *(Pair *)&DAT_020f3e84[1];
+    d.id = 82;
+    d.x = second[which];
+    FUN_020c32b4(&d, resource);
+    d.id = 43;
+    d.x = 761856;
+    FUN_020c32b4(&d, *(int *)(s + 32));
+    pos.x = 823296;
+    pos.y = 966656;
+    FUN_02079160(numbers, &pos, 0, 1, *(int *)(s + 36) + 1, -1, -1, 8, 0);
+    d.id = 10;
+    d.x = 856064;
+    d.y = 966656;
+    FUN_020c32b4(&d, resource);
+    pos.x = 888832;
+    FUN_02079160(numbers, &pos, 0, 1, FUN_0208b514(s), -1, -1, 8, 0);
+    d.id = 44;
+    d.x = 925696;
+    d.y = 962560;
+    FUN_020c32b4(&d, *(int *)(s + 32));
+}

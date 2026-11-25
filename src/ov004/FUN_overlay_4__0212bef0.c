@@ -1,0 +1,5 @@
+// flags: -O4,s
+// FUN_overlay_4__0212bef0 @ 0x0212bef0 (0xc4, Thumb)
+// Refresh resource readiness and copied state, invalidate changed count cache, then draw up to three status rows.
+typedef struct {unsigned short h[4];int xy[2];} Draw;typedef struct {int v[34];} Snapshot;extern void *FUN_020c1fc8(void),*FUN_02077930(void);extern int FUN_020c2608(void *,int);extern void FUN_020c32b4(Draw *,int),FUN_02077794(Snapshot *),FUN_02077b40(void *,Snapshot *),FUN_overlay_4__0212bfb4(int *);
+void FUN_overlay_4__0212bef0(int *self){Draw d;Snapshot snapshot;int i;if(FUN_020c2608(FUN_020c1fc8(),self[7])&&self[8]==0)self[8]=1;d.h[0]=0;d.h[1]=0;d.h[2]=0;d.h[0]=6;d.xy[0]=0x5b000;d.xy[1]=0x10f000;FUN_020c32b4(&d,self[7]);FUN_02077794(&snapshot);FUN_02077b40(FUN_02077930(),&snapshot);if(self[12]!=snapshot.v[33])self[11]=0;self[12]=snapshot.v[33];FUN_overlay_4__0212bfb4(self);if(snapshot.v[33]<=3&&snapshot.v[33]>0&&self[7]!=-1){for(i=0;i<snapshot.v[33];i++){if(self[3+i]==1)d.h[0]=6;else d.h[0]=7;d.xy[0]=0x5b000;d.xy[1]=(271+12*(i+1))<<12;FUN_020c32b4(&d,self[7]);}}}

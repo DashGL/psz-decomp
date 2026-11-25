@@ -1,0 +1,11 @@
+// FUN_overlay_22__0219a048 @ 0x0219a048 (0x14, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch18.json; original draft retained for referenced provenance.
+// FUN_overlay_22__0219a048 @ 0x0219a048 (code 0x10, pool extent 0x14, thumb)
+// check: vers=2.0/sp2p3 target=0x14 candidate=0x14 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA overlay 22 reconstruction from extracted module bytes, 2026-11-04.
+ * Install cleanup dispatch table and clean optional owner child; return self.
+ * Field identities and high-level API contracts remain provisional.
+ */
+extern void FUN_overlay_22__0219ab20(void *);
+void *FUN_overlay_22__0219a048(unsigned int *self) { self[0]=0x021a11f4; FUN_overlay_22__0219ab20(self); return self; }

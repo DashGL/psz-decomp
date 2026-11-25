@@ -1,0 +1,11 @@
+// FUN_020b69dc @ 0x020b69dc (0x18, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-arm9-2026-11-07-batch19.json; original draft retained for referenced provenance.
+// FUN_020b69dc @ 0x020b69dc (inventory code 0x18, thumb)
+// check: 2.0/sp2p3 target=0x18 candidate=0x18 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA ROM reconstruction, 2026-11-04.
+ * Build five descriptors and pass them to helper.
+ * Field roles remain provisional. Evidence: extracted/arm9/arm9.bin
+ * at named address, disassembly in scratch/coverage-high-game/020b69dc.txt.
+ */
+extern int FUN_020b6200(void *,void *); extern unsigned int FUN_020b69f4(void *,void *); unsigned int FUN_020b69dc(void *self) { unsigned int descriptors[20]; FUN_020b6200(self,descriptors); return FUN_020b69f4(self,descriptors); }

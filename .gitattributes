@@ -1,0 +1,6 @@
+# Normalize line endings: index is uniformly LF; checkouts may be CRLF on
+# Windows. Mark generated binary data explicit so git never renormalizes it.
+* text=auto eol=lf
+*.png binary
+*.bin binary
+*.nds binary

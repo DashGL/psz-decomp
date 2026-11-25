@@ -1,0 +1,21 @@
+ARM9 functions (Ghidra): 8118
+live (call+data closed): 8066 (~1015 KB)
+dead: 52 (~13 KB = 1% of image bytes)
+dead islands (weak-connected call components): 11; largest: 18
+dead with zero callers: 11
+
+  secure-area/pre-entry below entry 0x02000800: 0 (live: 0, unclassified: 0 -> unclassified_preentry.txt)
+  call-reachable from ARM9 entry: 5249
+  indirect-only (data-referenced from reachable code): 2817
+  unreferenced (stale candidates): 52
+  call sites scanned: 47190; distinct callees: 6587
+
+dead-candidate clusters (64KB blocks of arm9.bin):
+  0x02000000: 18
+  0x020b0000: 13
+  0x020d0000: 7
+  0x02060000: 6
+  0x02020000: 4
+  0x02070000: 2
+  0x02050000: 1
+  0x020e0000: 1

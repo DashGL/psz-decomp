@@ -1,0 +1,7 @@
+// FUN_overlay_5__0211e7d8 @ 0x0211e7d8 (0xe4, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch42.json; original draft retained for referenced provenance.
+// FUN_overlay_5__0211e7d8 @ 0x0211e7d8 (0xe4, Thumb)
+// check: vers=2.0/sp2p3 target=0xe4 candidate=0xe4 words=0 exact_bytes=0 bad_relocs=0
+// Advance timed presentation, accept gated skip input, load stage resources, or route by three-slot availability.
+extern int data_0211e9cc[];extern const char *data_0211e9a8[];extern int FUN_020bbf6c(unsigned int),FUN_020c4848(void);extern void FUN_overlay_5__0211e938(void *,int),FUN_02086e48(void *,int),FUN_0200d3a4(void *,int,int),FUN_020c2b84(void *,const char *,int,int,int),FUN_020c2d94(int,int,int);extern void *FUN_02086e3c(void),*FUN_0200d16c(void);extern char *FUN_020870c4(void *);
+void FUN_overlay_5__0211e7d8(int *self){int any,i;const char *path;if(self[8]==1&&self[2]>data_0211e9cc[self[8]]&&FUN_020bbf6c(9)){if(FUN_020c4848())FUN_overlay_5__0211e938(self,0);return;}if(self[10]==1){if(self[8]>=3){if(!FUN_020c4848())return;any=0;for(i=0;i<3;i++){FUN_02086e48(FUN_02086e3c(),i);any|=*(unsigned char *)(FUN_020870c4(FUN_02086e3c())+100)!=0;}if(any==1)FUN_0200d3a4(FUN_0200d16c(),0,0);else FUN_0200d3a4(FUN_0200d16c(),7,1);}else{path=data_0211e9a8[self[8]];if(path)FUN_020c2b84(self,path,3,0,1);self[10]=2;FUN_020c2d94(1,1,0);}}else{self[2]++;if(*(unsigned long long *)(self+4)<(unsigned long long)(long long)self[2])FUN_overlay_5__0211e938(self,0);}}

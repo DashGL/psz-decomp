@@ -1,0 +1,7 @@
+// FUN_overlay_3__0211ec3c @ 0x0211ec3c (0x12c, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch40.json; original draft retained for referenced provenance.
+// FUN_overlay_3__0211ec3c @ 0x0211ec3c (0x12c, Thumb)
+// check: vers=2.0/sp2p3 target=0x12c candidate=0x12c words=0 exact_bytes=0 bad_relocs=0
+// Set presentation state and two callback pairs, refresh indexed text or fade, and choose feedback.
+typedef struct {int a,b;} Pair;extern Pair data_0211ee60[];extern void FUN_020c38f0(void *,int),FUN_overlay_3__0211ed68(void *,int),FUN_020c2d94(int,int,int),FUN_020c193c(int,int,int,int,int);extern int FUN_020bbf6c(unsigned int);
+void FUN_overlay_3__0211ec3c(int *self,unsigned int state){int cancel;self[4]=state;FUN_020c38f0((void *)self[10],0);switch(state){case 0:self[9]=1;*(Pair *)(self+2)=data_0211ee60[0];*(Pair *)self=data_0211ee60[1];FUN_overlay_3__0211ed68(self,0);break;case 1:self[9]=1;*(Pair *)(self+2)=data_0211ee60[4];*(Pair *)self=data_0211ee60[7];FUN_overlay_3__0211ed68(self,1);break;case 2:self[12]=0;*(Pair *)(self+2)=data_0211ee60[3];*(Pair *)self=data_0211ee60[5];FUN_overlay_3__0211ed68(self,2);break;case 4:self[9]=2;*(Pair *)(self+2)=data_0211ee60[2];*(Pair *)self=data_0211ee60[6];FUN_overlay_3__0211ed68(self,3);break;case 5:FUN_020c2d94(0,2,2);break;default:self[4]=5;FUN_020c2d94(0,2,2);break;}if(self[4]!=5)FUN_020c193c(0,0,0,0,-1);else{cancel=self[9]==1;cancel|=FUN_020bbf6c(2)==1;if(cancel==1)FUN_020c193c(0,1,0,0,-1);else FUN_020c193c(0,0,0,0,-1);}}

@@ -1,0 +1,2825 @@
+{
+  "schema_version": 1,
+  "rom": "NTR-C24E-USA (Phantasy Star 0 USA, 2009-11-10)",
+  "sdk_version_tags": [
+    "[SDK+UBIQUITOUS:CPS]",
+    "[SDK+NINTENDO:WiFi2.1.30003.0709200229]",
+    "[SDK+UBIQUITOUS:SSL]",
+    "[SDK+NINTENDO:BACKUP]",
+    "[SDK+NINTENDO:DWC3.1.30001.080708.1933_DWC_3_1_PLUS]",
+    "[SDK+Actimagine:Mobiclip SDK V1.0.2]"
+  ],
+  "arm9_regions": [
+    {
+      "name": "MSL_C / CRT0 / ARM EABI Runtime",
+      "start": "0x02000800",
+      "end": "0x0200c960",
+      "layer": "sdk_runtime",
+      "porting_strategy": "replace_with_libc",
+      "notes": "CRT0 startup, __pformatter, __strtold, ARM soft-float/64-bit helpers, __clear, longjmp"
+    },
+    {
+      "name": "NitroSystem (NNS_G2d/G3d/Snd/Fnd) + NitroWiFi (CPS/SOC/SSL/WCM)",
+      "start": "0x0200c960",
+      "end": "0x0202e980",
+      "layer": "sdk_middleware",
+      "porting_strategy": "replace_with_hal",
+      "notes": "2D/3D NitroSystem render/archive helpers and NitroWiFi/CPS/SSL networking stack"
+    },
+    {
+      "name": "PSZ Core Engine & Game Logic (Part 1)",
+      "start": "0x0202e980",
+      "end": "0x02056490",
+      "layer": "game_logic",
+      "porting_strategy": "port_directly",
+      "notes": "Math/vec helpers, scene graph, rendering dispatch, camera, physics, core actor systems"
+    },
+    {
+      "name": "NitroSDK 4.2 (CARD/CP/CTRDG/FS/FX/MTX/VEC/GX/MATH/MB/MI/OS/PXI/SND/WM)",
+      "start": "0x02056490",
+      "end": "0x0206b000",
+      "layer": "sdk_hardware",
+      "porting_strategy": "replace_with_hal",
+      "notes": "Alphabetical NitroSDK 4.2 modules: CARD (0x020564xx), CP (0x02056f40), CTRDG (0x020571xx), FS/FX/MTX/VEC (0x02058xxx..0x0205c9xx), GX/G2/G3 (0x0205ccxx..0x0205ffff), MATH/MB (0x02060xxx..0x02064xxx), MI (0x020654xx..0x02065fff), OS/PXI/PM/RTC/SND/SPI/TP/WM (0x020660xx..0x0206afff)"
+    },
+    {
+      "name": "PSZ Game Logic (Part 2)",
+      "start": "0x0206b000",
+      "end": "0x020c5464",
+      "layer": "game_logic",
+      "porting_strategy": "port_directly",
+      "notes": "Gameplay state machines, combat, players, enemies, items, quests, UI, C++ allocator (0x020ba7f4..0x020ba8c4), game networking"
+    },
+    {
+      "name": "DS Protect v1.20 Anti-Piracy",
+      "start": "0x020c5464",
+      "end": "0x020c61ec",
+      "layer": "drm",
+      "porting_strategy": "stub_out",
+      "notes": "14 decrypted DS Protect v1.20 ARM assembly routines (re-encrypted on retail DS ROM build by dsd)"
+    },
+    {
+      "name": "GameSpy SDK + DWC 3.1 Plus",
+      "start": "0x020c6200",
+      "end": "0x020eb948",
+      "layer": "sdk_network",
+      "porting_strategy": "replace_with_hal",
+      "notes": "GameSpy hashtable/gp/gpi/gbucket/gt2/sb_serverlist (0x020c70xx..0x020dafff) and Nintendo DWC3.1 auth/http/netcheck/matchmaking (0x020db0xx..0x020eb948)"
+    }
+  ],
+  "overlays": [
+    {
+      "id": 0,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Title screen (bgs_titletop, obm_title_l1/l2)"
+    },
+    {
+      "id": 1,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Save/backup error screen (backuperror_text.bin)"
+    },
+    {
+      "id": 2,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Title window / mode select (obs_twin)"
+    },
+    {
+      "id": 3,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Title command menu (obs_titlcom)"
+    },
+    {
+      "id": 4,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Field/Battle HUD & in-game menu (obs_btlcom, game_menu_text.bin)"
+    },
+    {
+      "id": 5,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Boot logos (Nintendo, Wi-Fi, SEGA, Mobiclip)"
+    },
+    {
+      "id": 6,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Cutscene / event script runner (STOP_BGM, SET_BG_MAIN/SUB, FADE_IN_SUB)"
+    },
+    {
+      "id": 7,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Friend list / Wi-Fi menu (bgs_frilist, obm_ctmenu)"
+    },
+    {
+      "id": 8,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Title mode message (MODE_MESSAGE)"
+    },
+    {
+      "id": 9,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Free Play / party select (bgs_fply, obs_fply)"
+    },
+    {
+      "id": 10,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Soft keyboard / text entry UI (obs_sign, bgs_skey, obs_hkana)"
+    },
+    {
+      "id": 11,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Visual chat / keyboard input module"
+    },
+    {
+      "id": 12,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Dairen City hub / shop / guild / quest counter UI (largest overlay, 132 KB)"
+    },
+    {
+      "id": 13,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Secondary UI / lobby sub-module"
+    },
+    {
+      "id": 14,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Options & settings menu (Settings., soft_kbd)"
+    },
+    {
+      "id": 15,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Character creation / dressing room / lobby (char/ybBgStep11.ncl.l, 122 KB)"
+    },
+    {
+      "id": 16,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "sdk_middleware",
+      "role": "Actimagine Mobiclip V1.0.2 video player (movie_op/pr/ev00.mods)"
+    },
+    {
+      "id": 17,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Encyclopedia / item-monster database / sub-menu"
+    },
+    {
+      "id": 18,
+      "slot": 0,
+      "base": "0x0211e640",
+      "layer": "game_logic",
+      "role": "Wi-Fi matchmaking & party search setup (bgs_schset02/03)"
+    },
+    {
+      "id": 19,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Boss: Dark Falz (boss_darkfalz; Stage 07 Dark Shrine Boss 2)"
+    },
+    {
+      "id": 20,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Boss: Reyburn (boss_dragon; Stage 01 Gurhacia Valley Boss)"
+    },
+    {
+      "id": 21,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Boss: Octo Diablo (boss_octopus; Stage 02 Ozette Wetland Boss)"
+    },
+    {
+      "id": 22,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Boss: Chaos & Mobius (boss_robot; Stage 05 Paru Boss) & Humilias (boss_robot_cmb; Stage 06 Arca Plant Boss)"
+    },
+    {
+      "id": 23,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 08: Eternal Tower & Rare Enemies (rappy, booma, jigobooma, mother/sword/gun/tech)"
+    },
+    {
+      "id": 24,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 01: Gurhacia Valley Enemies (lizard, vulture, snake, lion, hyena)"
+    },
+    {
+      "id": 25,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 02: Ozette Wetland Enemies (frog, seal, roc)"
+    },
+    {
+      "id": 26,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 03: Rioh Snowfield Enemies (rabbit, deer, wolf, gorilla)"
+    },
+    {
+      "id": 27,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 04: Makara Ruins Enemies (mole, bat, tiger, armadillo)"
+    },
+    {
+      "id": 28,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 05: Oblivion City Paru Enemies (shrimp, frog_bomb, quad, orangutan)"
+    },
+    {
+      "id": 29,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 06: Arca Plant Enemies (shooter, board, tank)"
+    },
+    {
+      "id": 30,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Stage 07: Dark Shrine Enemies (circle, leg, lower, swordman)"
+    },
+    {
+      "id": 31,
+      "slot": 1,
+      "base": "0x02197f80",
+      "layer": "game_logic",
+      "role": "Boss: Mother Trinity (boss_mother / boss_mother_piece; Stage 07 Dark Shrine Boss 1)"
+    }
+  ],
+  "proven_symbols": [
+    {
+      "addr": "0x02000800",
+      "fun": "FUN_02000800",
+      "name": "_start",
+      "subsystem": "CRT0",
+      "provenance": "ARM9 entry point in header.yaml"
+    },
+    {
+      "addr": "0x02002ed8",
+      "fun": "FUN_02002ed8",
+      "name": "__pformatter",
+      "subsystem": "MSL_C",
+      "provenance": "exact MSL_C printf formatter switch/format parsing"
+    },
+    {
+      "addr": "0x020038ec",
+      "fun": "FUN_020038ec",
+      "name": "crt_snprintf",
+      "subsystem": "MSL_C",
+      "provenance": "snprintf wrapper formatting NitroFS paths across enemy/object/player loaders"
+    },
+    {
+      "addr": "0x02003d54",
+      "fun": "FUN_02003d54",
+      "name": "crt_strncpy",
+      "subsystem": "MSL_C",
+      "provenance": "bounded string copy called by NARC_Ctor (FUN_020bc2dc)"
+    },
+    {
+      "addr": "0x02003f38",
+      "fun": "FUN_02003f38",
+      "name": "crt_memcmp",
+      "subsystem": "MSL_C",
+      "provenance": "4-byte ZARC magic signature check in ZARC_Open (FUN_020c3ca0)"
+    },
+    {
+      "addr": "0x02004014",
+      "fun": "FUN_02004014",
+      "name": "__strtold",
+      "subsystem": "MSL_C",
+      "provenance": "byte-matched 4,684B MSL_C strtold implementation"
+    },
+    {
+      "addr": "0x02008400",
+      "fun": "FUN_02008400",
+      "name": "_dadd",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02008718",
+      "fun": "FUN_02008718",
+      "name": "_d2f",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200881c",
+      "fun": "FUN_0200881c",
+      "name": "_dfix",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02008970",
+      "fun": "FUN_02008970",
+      "name": "_dmul",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02008e88",
+      "fun": "FUN_02008e88",
+      "name": "_dsub",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200923c",
+      "fun": "FUN_0200923c",
+      "name": "_fadd",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02009460",
+      "fun": "FUN_02009460",
+      "name": "_dgr",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200959c",
+      "fun": "FUN_0200959c",
+      "name": "_dls",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x020096c4",
+      "fun": "FUN_020096c4",
+      "name": "_dneq",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02009750",
+      "fun": "FUN_02009750",
+      "name": "_fgr",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x020097ac",
+      "fun": "FUN_020097ac",
+      "name": "_fls",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02009814",
+      "fun": "FUN_02009814",
+      "name": "_fdiv",
+      "subsystem": "MSL_Runtime",
+      "provenance": "IEEE-754 single-precision division runtime"
+    },
+    {
+      "addr": "0x02009c50",
+      "fun": "FUN_02009c50",
+      "name": "_ffix",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02009c84",
+      "fun": "FUN_02009c84",
+      "name": "_fflt",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x02009f00",
+      "fun": "FUN_02009f00",
+      "name": "_fsub",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200a338",
+      "fun": "FUN_0200a338",
+      "name": "_ll_udiv",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200a344",
+      "fun": "FUN_0200a344",
+      "name": "_ull_mod",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200a380",
+      "fun": "FUN_0200a380",
+      "name": "_ll_mul",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200a3a0",
+      "fun": "FUN_0200a3a0",
+      "name": "_s32_div_f",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200a5ac",
+      "fun": "FUN_0200a5ac",
+      "name": "_u32_div_f",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200a7a8",
+      "fun": "FUN_0200a7a8",
+      "name": "_ddiv",
+      "subsystem": "MSL_Runtime",
+      "provenance": "IEEE-754 double-precision division runtime"
+    },
+    {
+      "addr": "0x0200c938",
+      "fun": "FUN_0200c938",
+      "name": "__clear",
+      "subsystem": "MSL_Runtime",
+      "provenance": "VERIFIED_HELPER_TARGETS in tools/match.py"
+    },
+    {
+      "addr": "0x0200d124",
+      "fun": "FUN_0200d124",
+      "name": "GameStateManager_Create",
+      "subsystem": "PSZ_Core",
+      "provenance": "allocates singleton GameStateManager (D_02101df8)"
+    },
+    {
+      "addr": "0x0200d148",
+      "fun": "FUN_0200d148",
+      "name": "GameStateManager_Destroy",
+      "subsystem": "PSZ_Core",
+      "provenance": "destroys singleton GameStateManager (D_02101df8)"
+    },
+    {
+      "addr": "0x0200d16c",
+      "fun": "FUN_0200d16c",
+      "name": "GameStateManager_GetInstance",
+      "subsystem": "PSZ_Core",
+      "provenance": "returns singleton GameStateManager pointer"
+    },
+    {
+      "addr": "0x0200d178",
+      "fun": "FUN_0200d178",
+      "name": "GameStateManager_Ctor",
+      "subsystem": "PSZ_Core",
+      "provenance": "constructs GameStateManager + 128B OverlaySlot"
+    },
+    {
+      "addr": "0x0200d1a8",
+      "fun": "FUN_0200d1a8",
+      "name": "GameStateManager_Dtor",
+      "subsystem": "PSZ_Core",
+      "provenance": "destroys OverlaySlot and clears singleton"
+    },
+    {
+      "addr": "0x0200d1d4",
+      "fun": "FUN_0200d1d4",
+      "name": "GameStateManager_Update",
+      "subsystem": "PSZ_Core",
+      "provenance": "Slot-0 overlay state machine over g_GameStateTable (DAT_020ebbbc, 19 states)"
+    },
+    {
+      "addr": "0x0200d318",
+      "fun": "FUN_0200d318",
+      "name": "GameStateManager_EnterState",
+      "subsystem": "PSZ_Core",
+      "provenance": "dispatches g_GameStateTable[id].on_enter (DAT_020ebbc0)"
+    },
+    {
+      "addr": "0x0200d34c",
+      "fun": "FUN_0200d34c",
+      "name": "GameStateManager_ExitState",
+      "subsystem": "PSZ_Core",
+      "provenance": "dispatches g_GameStateTable[id].on_exit (DAT_020ebbc8)"
+    },
+    {
+      "addr": "0x0200d378",
+      "fun": "FUN_0200d378",
+      "name": "GameStateManager_TickState",
+      "subsystem": "PSZ_Core",
+      "provenance": "dispatches g_GameStateTable[id].on_update (D_020ebbc4)"
+    },
+    {
+      "addr": "0x0200d3a4",
+      "fun": "FUN_0200d3a4",
+      "name": "GameStateManager_RequestTransition",
+      "subsystem": "PSZ_Core",
+      "provenance": "validates state 0..18 and queues next Slot-0 state + fade flags"
+    },
+    {
+      "addr": "0x02012600",
+      "fun": "FUN_02012600",
+      "name": "NNS_FndMountArchive",
+      "subsystem": "NitroSystem_FND",
+      "provenance": "mounts NARC binary into 0x68-byte NNS_FndArchive (called by NARC_Mount)"
+    },
+    {
+      "addr": "0x02012748",
+      "fun": "FUN_02012748",
+      "name": "NNS_FndUnmountArchive",
+      "subsystem": "NitroSystem_FND",
+      "provenance": "unmounts NNS_FndArchive (called by NARC_Dtor/Delete)"
+    },
+    {
+      "addr": "0x02012770",
+      "fun": "FUN_02012770",
+      "name": "NNS_FndGetArchiveFileByName",
+      "subsystem": "NitroSystem_FND",
+      "provenance": "resolves <mount>:/<name> entry pointer (called by NARC_GetFileByName)"
+    },
+    {
+      "addr": "0x020127c0",
+      "fun": "FUN_020127c0",
+      "name": "NNS_FndGetArchiveFileByIndex",
+      "subsystem": "NitroSystem_FND",
+      "provenance": "resolves indexed entry pointer (called by NARC_GetFileByIndex)"
+    },
+    {
+      "addr": "0x02031a80",
+      "fun": "FUN_02031a80",
+      "name": "Quest_LoadRandomDungeon",
+      "subsystem": "PSZ_Quest",
+      "provenance": "loads quest/random_dungeon.rel"
+    },
+    {
+      "addr": "0x02032018",
+      "fun": "FUN_02032018",
+      "name": "Quest_LoadTextTables",
+      "subsystem": "PSZ_Quest",
+      "provenance": "loads quest_text_multi/single/stage.bin"
+    },
+    {
+      "addr": "0x020322d4",
+      "fun": "FUN_020322d4",
+      "name": "Quest_LoadTower",
+      "subsystem": "PSZ_Quest",
+      "provenance": "loads quest/tower.rel"
+    },
+    {
+      "addr": "0x02033f30",
+      "fun": "FUN_02033f30",
+      "name": "ResMgr_BindModelTex",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "binds texture handle to registered 3D model in ResMgr"
+    },
+    {
+      "addr": "0x02033fcc",
+      "fun": "FUN_02033fcc",
+      "name": "ResMgr_UnbindModelTex",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "unbinds texture from registered 3D model before unregistering"
+    },
+    {
+      "addr": "0x020345f0",
+      "fun": "FUN_020345f0",
+      "name": "vec3_copy",
+      "subsystem": "PSZ_Core",
+      "provenance": "3-word VecFx32 copy (104 callers)"
+    },
+    {
+      "addr": "0x02035408",
+      "fun": "FUN_02035408",
+      "name": "vec3_set",
+      "subsystem": "PSZ_Core",
+      "provenance": "3-word VecFx32 setter (215 callers)"
+    },
+    {
+      "addr": "0x02037adc",
+      "fun": "FUN_02037adc",
+      "name": "ResMgr_RegisterModel",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "registers 3D model buffer in global ResMgr DAT_02108c84"
+    },
+    {
+      "addr": "0x02037b88",
+      "fun": "FUN_02037b88",
+      "name": "ResMgr_UnregisterModel",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "unregisters 3D model handle from global ResMgr DAT_02108c84"
+    },
+    {
+      "addr": "0x02037bd0",
+      "fun": "FUN_02037bd0",
+      "name": "ResMgr_RegisterTex",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "registers 3D texture buffer in global ResMgr DAT_02108c84"
+    },
+    {
+      "addr": "0x02037c5c",
+      "fun": "FUN_02037c5c",
+      "name": "ResMgr_UnregisterTex",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "unregisters 3D texture handle from global ResMgr DAT_02108c84"
+    },
+    {
+      "addr": "0x02037c88",
+      "fun": "FUN_02037c88",
+      "name": "ResMgr_RegisterAnim",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "registers 3D animation buffer in global ResMgr DAT_02108c84"
+    },
+    {
+      "addr": "0x02037d20",
+      "fun": "FUN_02037d20",
+      "name": "ResMgr_UnregisterAnim",
+      "subsystem": "PSZ_ResMgr",
+      "provenance": "unregisters 3D animation handle from global ResMgr DAT_02108c84"
+    },
+    {
+      "addr": "0x0203e70c",
+      "fun": "FUN_0203e70c",
+      "name": "PlayerManager_Destroy",
+      "subsystem": "PSZ_Player",
+      "provenance": "destroys global PlayerManager singleton DAT_02108d08 via vtable[1]"
+    },
+    {
+      "addr": "0x0203e72c",
+      "fun": "FUN_0203e72c",
+      "name": "PlayerManager_LoadCharacterModel",
+      "subsystem": "PSZ_Player",
+      "provenance": "loads character model from player/player_model.zarc and player/<id>_tex.zarc"
+    },
+    {
+      "addr": "0x0203e910",
+      "fun": "FUN_0203e910",
+      "name": "PlayerManager_GetSlotHandles",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns 48-byte PlayerResHandles at +0x368 for player slot 0..3"
+    },
+    {
+      "addr": "0x0203e934",
+      "fun": "FUN_0203e934",
+      "name": "PlayerManager_RegisterModelTex",
+      "subsystem": "PSZ_Player",
+      "provenance": "registers loaded player model and texture buffers in ResMgr"
+    },
+    {
+      "addr": "0x0203e9b0",
+      "fun": "FUN_0203e9b0",
+      "name": "PlayerManager_UnregisterModelTex",
+      "subsystem": "PSZ_Player",
+      "provenance": "unregisters texture and model handles for player slot 0..3"
+    },
+    {
+      "addr": "0x0203e9fc",
+      "fun": "FUN_0203e9fc",
+      "name": "PlayerManager_UnregisterAllSlots",
+      "subsystem": "PSZ_Player",
+      "provenance": "unregisters all 22 anims, textures, and models across 4 player slots"
+    },
+    {
+      "addr": "0x0203ea90",
+      "fun": "FUN_0203ea90",
+      "name": "PlayerAppearance_GetModelIndex",
+      "subsystem": "PSZ_Player",
+      "provenance": "maps class_id (0..13 or NPC 14..18) + head_variant to player_model.zarc index 0..60"
+    },
+    {
+      "addr": "0x0203eac4",
+      "fun": "FUN_0203eac4",
+      "name": "PlayerAppearance_GetTexIndex",
+      "subsystem": "PSZ_Player",
+      "provenance": "maps costume/hair/skin colors to texture variant index 0..44"
+    },
+    {
+      "addr": "0x0203eb00",
+      "fun": "FUN_0203eb00",
+      "name": "PlayerAppearance_IsNPC",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns 1 if appearance class_id is in NPC range 14..18"
+    },
+    {
+      "addr": "0x0203eb14",
+      "fun": "FUN_0203eb14",
+      "name": "PlayerManager_IsSlotTickFrame",
+      "subsystem": "PSZ_Player",
+      "provenance": "checks staggered 40-frame slot tick (frame_counter % 40 == 10 * slot)"
+    },
+    {
+      "addr": "0x0203eb3c",
+      "fun": "FUN_0203eb3c",
+      "name": "PlayerManager_GetAlwaysAnimHandle",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns resident player/99_always.narc anim handle 0..1 or 0xffff"
+    },
+    {
+      "addr": "0x0203eb5c",
+      "fun": "FUN_0203eb5c",
+      "name": "PlayerManager_LoadAnimSync",
+      "subsystem": "PSZ_Player",
+      "provenance": "synchronously loads and mounts weapon/PA or city animation NARC for player slot"
+    },
+    {
+      "addr": "0x0203ec54",
+      "fun": "FUN_0203ec54",
+      "name": "PlayerManager_LoadAnimAsync",
+      "subsystem": "PSZ_Player",
+      "provenance": "starts async weapon/PA or sync city animation NARC load for player slot"
+    },
+    {
+      "addr": "0x0203ed5c",
+      "fun": "FUN_0203ed5c",
+      "name": "PlayerManager_MountAnimAssets",
+      "subsystem": "PSZ_Player",
+      "provenance": "extracts 22 anims + PA param table from mounted player anim NARC and registers"
+    },
+    {
+      "addr": "0x0203ee1c",
+      "fun": "FUN_0203ee1c",
+      "name": "PlayerManager_FormatWeaponPAPath",
+      "subsystem": "PSZ_Player",
+      "provenance": "formats player/<weapon>_<m/w/sm/sw>_pa*.narc path from body size and gender"
+    },
+    {
+      "addr": "0x0203eee4",
+      "fun": "FUN_0203eee4",
+      "name": "PlayerManager_UnloadAnimSlot",
+      "subsystem": "PSZ_Player",
+      "provenance": "unregisters 22 anim handles and deletes anim NARC for player slot"
+    },
+    {
+      "addr": "0x0203ef54",
+      "fun": "FUN_0203ef54",
+      "name": "PlayerManager_IsAnimSlotMounted",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns 1 if anim NARC for player slot is in mounted state 2"
+    },
+    {
+      "addr": "0x0203ef7c",
+      "fun": "FUN_0203ef7c",
+      "name": "PlayerManager_IsAnyAnimLoading",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns 1 if any of the 4 player anim NARCs is in loading state 1"
+    },
+    {
+      "addr": "0x0203efb4",
+      "fun": "FUN_0203efb4",
+      "name": "PlayerManager_GetPAEntry",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns 0x98-byte PlayerPAAnimParam entry for slot (0..3) and anim (0..21)"
+    },
+    {
+      "addr": "0x0203efe0",
+      "fun": "FUN_0203efe0",
+      "name": "PlayerManager_LoadPhotonBlast",
+      "subsystem": "PSZ_Player",
+      "provenance": "starts async load of player/pb_{centaur,bird,dragon,rabbit}.narc"
+    },
+    {
+      "addr": "0x0203f078",
+      "fun": "FUN_0203f078",
+      "name": "PlayerManager_UnloadPhotonBlast",
+      "subsystem": "PSZ_Player",
+      "provenance": "unregisters Photon Blast model/anim handles and deletes PB NARC"
+    },
+    {
+      "addr": "0x0203f108",
+      "fun": "FUN_0203f108",
+      "name": "PlayerManager_MountPhotonBlast",
+      "subsystem": "PSZ_Player",
+      "provenance": "extracts and registers Photon Blast model and 2 anims for player slot"
+    },
+    {
+      "addr": "0x0203f1cc",
+      "fun": "FUN_0203f1cc",
+      "name": "PlayerManager_IsPBMounted",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns 1 if Photon Blast NARC for player slot is mounted"
+    },
+    {
+      "addr": "0x0203f1f0",
+      "fun": "FUN_0203f1f0",
+      "name": "PlayerManager_GetPBHandles",
+      "subsystem": "PSZ_Player",
+      "provenance": "returns 6-byte PlayerPBHandles at +0x4a8 for player slot 0..3"
+    },
+    {
+      "addr": "0x0203f214",
+      "fun": "FUN_0203f214",
+      "name": "PlayerManager_Ctor",
+      "subsystem": "PSZ_Player",
+      "provenance": "initializes 0x510-byte PlayerManager, opens player_model.zarc, pb_param_data.rel, and 99_always.narc"
+    },
+    {
+      "addr": "0x0203f894",
+      "fun": "FUN_0203f894",
+      "name": "EnemyResourceCache_Destroy",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "destroys singleton EnemyResourceCache (0x02108d5c)"
+    },
+    {
+      "addr": "0x0203f8b8",
+      "fun": "FUN_0203f8b8",
+      "name": "EnemyResourceSlot_Reset",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "clears 52-byte EnemyResourceSlot and sets enemy_id=-1"
+    },
+    {
+      "addr": "0x0203f8d8",
+      "fun": "FUN_0203f8d8",
+      "name": "EnemyResourceCache_Ctor",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "allocates 3 EnemyResourceSlots (e0..e2) and loads enemy SE bank"
+    },
+    {
+      "addr": "0x0203f96c",
+      "fun": "FUN_0203f96c",
+      "name": "EnemyResourceCache_Dtor",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "unloads enemy SE bank, slots, overlay, and deletes heap"
+    },
+    {
+      "addr": "0x0203f9c8",
+      "fun": "FUN_0203f9c8",
+      "name": "EnemyResourceCache_Poll",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "drives async enemy/%s.narc loads via g_EnemyNames[69] and polls Slot-1 overlay"
+    },
+    {
+      "addr": "0x0203fb00",
+      "fun": "FUN_0203fb00",
+      "name": "EnemyResourceCache_LoadSync",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "synchronously loads and mounts enemy/%s.narc via g_EnemyNames[69]"
+    },
+    {
+      "addr": "0x0203fb70",
+      "fun": "FUN_0203fb70",
+      "name": "EnemyResourceSlot_MountAssets",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "registers all 7 NSBMD/NSBTX/anim groups and 20B sub-resources"
+    },
+    {
+      "addr": "0x0203fd88",
+      "fun": "FUN_0203fd88",
+      "name": "ResourceHandleSet_Init",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "initializes 7 u16 3D resource handles to 0xffff"
+    },
+    {
+      "addr": "0x0203fda4",
+      "fun": "FUN_0203fda4",
+      "name": "EnemySubResource_Ctor",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "initializes EnemySubResource via ResourceHandleSet_Init"
+    },
+    {
+      "addr": "0x0203fdb0",
+      "fun": "FUN_0203fdb0",
+      "name": "EnemyResourceCache_UnloadEnemy",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "releases slot for enemy_id and clears pending queue entry"
+    },
+    {
+      "addr": "0x0203fde0",
+      "fun": "FUN_0203fde0",
+      "name": "EnemyResourceCache_UnloadAll",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "releases all 3 EnemyResourceSlots and clears queue"
+    },
+    {
+      "addr": "0x0203fe10",
+      "fun": "FUN_0203fe10",
+      "name": "EnemyResourceSlot_Release",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "unregisters 7 3D resource groups + sub-resources and deletes NARC"
+    },
+    {
+      "addr": "0x0203ff0c",
+      "fun": "FUN_0203ff0c",
+      "name": "EnemyResourceCache_FindSlot",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "finds active EnemyResourceSlot matching enemy_id"
+    },
+    {
+      "addr": "0x0203ff48",
+      "fun": "FUN_0203ff48",
+      "name": "EnemyResourceCache_FindFreeSlot",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns first inactive EnemyResourceSlot"
+    },
+    {
+      "addr": "0x0203ff68",
+      "fun": "FUN_0203ff68",
+      "name": "EnemyResourceCache_GetHeader",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns mounted EnemyAssetHeader for enemy_id"
+    },
+    {
+      "addr": "0x0203ff7c",
+      "fun": "FUN_0203ff7c",
+      "name": "EnemyResourceCache_GetModelId",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns group-0 NSBMD 3D model handle for enemy_id"
+    },
+    {
+      "addr": "0x0203ffa8",
+      "fun": "FUN_0203ffa8",
+      "name": "EnemyResourceCache_GetResourceId",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns mapped 3D resource handle for enemy_id, kind, index"
+    },
+    {
+      "addr": "0x0203ffe8",
+      "fun": "FUN_0203ffe8",
+      "name": "EnemyResourceCache_GetSubResource",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns indexed 20B EnemySubResource for enemy_id"
+    },
+    {
+      "addr": "0x02040004",
+      "fun": "FUN_02040004",
+      "name": "EnemyResourceCache_GetHeaderParam",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns header->config_word (+0x30) for enemy_id"
+    },
+    {
+      "addr": "0x02040010",
+      "fun": "FUN_02040010",
+      "name": "EnemyResourceCache_IsLoaded",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns 1 if enemy_id has mounted EnemyAssetHeader"
+    },
+    {
+      "addr": "0x0204002c",
+      "fun": "FUN_0204002c",
+      "name": "EnemyResourceCache_IsLoadedOrQueued",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "returns 1 if enemy_id is loaded or queued in pending_ids[0..2]"
+    },
+    {
+      "addr": "0x020414c0",
+      "fun": "FUN_020414c0",
+      "name": "SceneLandManager_Create",
+      "subsystem": "PSZ_Scene",
+      "provenance": "lazily allocates and constructs 68-byte SceneLandManager singleton DAT_02108d64"
+    },
+    {
+      "addr": "0x020414e4",
+      "fun": "FUN_020414e4",
+      "name": "SceneLandManager_Destroy",
+      "subsystem": "PSZ_Scene",
+      "provenance": "unloads and destroys SceneLandManager singleton DAT_02108d64"
+    },
+    {
+      "addr": "0x02041510",
+      "fun": "FUN_02041510",
+      "name": "SceneSkyHandles_Reset",
+      "subsystem": "PSZ_Scene",
+      "provenance": "resets 14-byte SceneSkyHandles (mdl, tex, 5 anims) to 0xffff"
+    },
+    {
+      "addr": "0x0204152c",
+      "fun": "FUN_0204152c",
+      "name": "SceneLandManager_Ctor",
+      "subsystem": "PSZ_Scene",
+      "provenance": "initializes 68-byte SceneLandManager and stores DAT_02108d64"
+    },
+    {
+      "addr": "0x0204156c",
+      "fun": "FUN_0204156c",
+      "name": "SceneLandManager_StubA",
+      "subsystem": "PSZ_Scene",
+      "provenance": "empty SceneLandManager lifecycle stub"
+    },
+    {
+      "addr": "0x02041570",
+      "fun": "FUN_02041570",
+      "name": "SceneLandManager_StubB",
+      "subsystem": "PSZ_Scene",
+      "provenance": "empty SceneLandManager lifecycle stub"
+    },
+    {
+      "addr": "0x02041574",
+      "fun": "FUN_02041574",
+      "name": "SceneLandManager_LoadRoom",
+      "subsystem": "PSZ_Scene",
+      "provenance": "mounts scn NARC, loads /lnd/{md,ta,pr,cl}, spawn set .rel, field effect, and backdrop"
+    },
+    {
+      "addr": "0x020415f8",
+      "fun": "FUN_020415f8",
+      "name": "SceneLandManager_UnloadRoom",
+      "subsystem": "PSZ_Scene",
+      "provenance": "unregisters and frees all room land, backdrop, texture, and spawn-set assets"
+    },
+    {
+      "addr": "0x020416dc",
+      "fun": "FUN_020416dc",
+      "name": "SceneLandManager_LoadLandFiles",
+      "subsystem": "PSZ_Scene",
+      "provenance": "loads scene/%c%c/%c/%s.narc and matching .nsbtx"
+    },
+    {
+      "addr": "0x02041740",
+      "fun": "FUN_02041740",
+      "name": "SceneLandManager_RegisterLand",
+      "subsystem": "PSZ_Scene",
+      "provenance": "registers /lnd/md (bound to room tex) and optional /lnd/ta"
+    },
+    {
+      "addr": "0x02041794",
+      "fun": "FUN_02041794",
+      "name": "SceneLandManager_LoadBackdrop",
+      "subsystem": "PSZ_Scene",
+      "provenance": "loads scene/fp/%s.{narc,nsbtx} and registers large (l.*) & small (s.*) skybox assets"
+    },
+    {
+      "addr": "0x020418c8",
+      "fun": "FUN_020418c8",
+      "name": "SceneLandManager_UnregisterSky",
+      "subsystem": "PSZ_Scene",
+      "provenance": "unregisters anims and model handle for one SceneSkyHandles layer"
+    },
+    {
+      "addr": "0x02041918",
+      "fun": "FUN_02041918",
+      "name": "SceneLandManager_LoadSpawnSet",
+      "subsystem": "PSZ_Scene",
+      "provenance": "resolves cm/c/d/r/s/f1..f9 suffix and loads set/%c%c/%c/%c%c%c/%s_%s.rel"
+    },
+    {
+      "addr": "0x02041a08",
+      "fun": "FUN_02041a08",
+      "name": "AreaKey_Copy",
+      "subsystem": "PSZ_Scene",
+      "provenance": "copies 5-word (20-byte) AreaKey descriptor"
+    },
+    {
+      "addr": "0x02041a20",
+      "fun": "FUN_02041a20",
+      "name": "SceneLandManager_SelectSetSuffix",
+      "subsystem": "PSZ_Scene",
+      "provenance": "selects rare suffix r or delegates to quest/floor suffix"
+    },
+    {
+      "addr": "0x02041a50",
+      "fun": "FUN_02041a50",
+      "name": "SceneLandManager_FormatFloorTag",
+      "subsystem": "PSZ_Scene",
+      "provenance": "formats spawn-set suffix for story (s), demo (d), or floor (f1..f9)"
+    },
+    {
+      "addr": "0x02041adc",
+      "fun": "FUN_02041adc",
+      "name": "SceneLandManager_LoadSetRel",
+      "subsystem": "PSZ_Scene",
+      "provenance": "loads spawn-set .rel file and resolves table via Rel_ResolveTable"
+    },
+    {
+      "addr": "0x02041afc",
+      "fun": "FUN_02041afc",
+      "name": "SceneLand_LoadTexture",
+      "subsystem": "PSZ_Scene",
+      "provenance": "loads .nsbtx texture file 16B-aligned and registers with ResMgr"
+    },
+    {
+      "addr": "0x02041b2c",
+      "fun": "FUN_02041b2c",
+      "name": "SceneLandManager_GetSubParam",
+      "subsystem": "PSZ_Scene",
+      "provenance": "returns /lnd/pr sub-param pointer at +0x04 or NULL"
+    },
+    {
+      "addr": "0x02041b4c",
+      "fun": "FUN_02041b4c",
+      "name": "SceneLandManager_GetSkyHandles",
+      "subsystem": "PSZ_Scene",
+      "provenance": "returns large (+0x28) or small (+0x36) SceneSkyHandles"
+    },
+    {
+      "addr": "0x02041b58",
+      "fun": "FUN_02041b58",
+      "name": "SceneLand_FormatSceneDir",
+      "subsystem": "PSZ_Scene",
+      "provenance": "formats scene/%c%c/%c directory prefix from room code"
+    },
+    {
+      "addr": "0x02041b80",
+      "fun": "FUN_02041b80",
+      "name": "SceneLand_FormatSetDir",
+      "subsystem": "PSZ_Scene",
+      "provenance": "formats set/%c%c/%c/%c%c%c directory prefix from room code"
+    },
+    {
+      "addr": "0x02041bb8",
+      "fun": "FUN_02041bb8",
+      "name": "SceneLandManager_GetRoomFlags",
+      "subsystem": "PSZ_Scene",
+      "provenance": "returns /lnd/pr room flags u16 at +0x10 or 0x7fff"
+    },
+    {
+      "addr": "0x02041bcc",
+      "fun": "FUN_02041bcc",
+      "name": "SceneLand_NormalizeAreaKey",
+      "subsystem": "PSZ_Scene",
+      "provenance": "normalizes cutscene/demo area keys (0..5) and stage 8 block 1"
+    },
+    {
+      "addr": "0x02044ef8",
+      "fun": "FUN_02044ef8",
+      "name": "WeaponIdDB_Load",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads item/weapon_id.narc (27 .rel tables) into resident BSS"
+    },
+    {
+      "addr": "0x020450cc",
+      "fun": "FUN_020450cc",
+      "name": "EffectIdDB_Load",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads item/effect_id.narc (149-entry index, meta, and class tables)"
+    },
+    {
+      "addr": "0x02045164",
+      "fun": "FUN_02045164",
+      "name": "MagParamDB_Load",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads item/mag_param.narc (feeding stat and 12x6x5 growth tables)"
+    },
+    {
+      "addr": "0x020451d4",
+      "fun": "FUN_020451d4",
+      "name": "EffectBank_LoadGlobal",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads item/global_{tex,dat}.narc and registers effect slots 0..10"
+    },
+    {
+      "addr": "0x020452ec",
+      "fun": "FUN_020452ec",
+      "name": "EffectBank_UnloadGlobal",
+      "subsystem": "PSZ_Effect",
+      "provenance": "unregisters effect slots 0..10 and deletes global_{dat,tex} NARCs"
+    },
+    {
+      "addr": "0x02045378",
+      "fun": "FUN_02045378",
+      "name": "EffectBank_LoadMiddle",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads item/middle_{tex,dat}.narc and registers effect slots 11..13"
+    },
+    {
+      "addr": "0x02045490",
+      "fun": "FUN_02045490",
+      "name": "EffectBank_UnloadMiddle",
+      "subsystem": "PSZ_Effect",
+      "provenance": "unregisters effect slots 11..13 and deletes middle_{dat,tex} NARCs"
+    },
+    {
+      "addr": "0x0204551c",
+      "fun": "FUN_0204551c",
+      "name": "EffectBank_LoadField",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads item/effect_{tex,dat}.narc and registers field effect slots 14..148"
+    },
+    {
+      "addr": "0x02045630",
+      "fun": "FUN_02045630",
+      "name": "EffectBank_UnloadField",
+      "subsystem": "PSZ_Effect",
+      "provenance": "unregisters field effect slots 14..148 and deletes effect_{dat,tex} NARCs"
+    },
+    {
+      "addr": "0x020456bc",
+      "fun": "FUN_020456bc",
+      "name": "EffectBank_GetHandles",
+      "subsystem": "PSZ_Effect",
+      "provenance": "copies 14B EffectResHandles and binds global (<11) or field (>=11) tex"
+    },
+    {
+      "addr": "0x0204570c",
+      "fun": "FUN_0204570c",
+      "name": "EffectIdDB_GetMeta",
+      "subsystem": "PSZ_Effect",
+      "provenance": "copies 8B EffectMetaEntry for effect_id < 149"
+    },
+    {
+      "addr": "0x0204573c",
+      "fun": "FUN_0204573c",
+      "name": "MagParamDB_GetFeedStats",
+      "subsystem": "PSZ_Effect",
+      "provenance": "looks up 4 Mag feeding stat modifiers for mag_type < 22"
+    },
+    {
+      "addr": "0x0204579c",
+      "fun": "FUN_0204579c",
+      "name": "MagParamDB_GetGrowthRow",
+      "subsystem": "PSZ_Effect",
+      "provenance": "copies 5B Mag growth row for (group < 12, item < 6)"
+    },
+    {
+      "addr": "0x020457f0",
+      "fun": "FUN_020457f0",
+      "name": "ItemModelPool_Init",
+      "subsystem": "PSZ_Effect",
+      "provenance": "allocates four 8 KiB item/mag dynamic model scratch pools"
+    },
+    {
+      "addr": "0x02045848",
+      "fun": "FUN_02045848",
+      "name": "ItemIdKey_Clear",
+      "subsystem": "PSZ_Effect",
+      "provenance": "writes 0xff to all 4 bytes of ItemIdKey"
+    },
+    {
+      "addr": "0x02045854",
+      "fun": "FUN_02045854",
+      "name": "ItemModelPool_Reset",
+      "subsystem": "PSZ_Effect",
+      "provenance": "frees all 4 item/mag model scratch buffers and clears keys/ptrs"
+    },
+    {
+      "addr": "0x020458ac",
+      "fun": "FUN_020458ac",
+      "name": "ItemModelPool_Invalidate",
+      "subsystem": "PSZ_Effect",
+      "provenance": "resets item model pool slot if cached ItemIdKey differs"
+    },
+    {
+      "addr": "0x020458f8",
+      "fun": "FUN_020458f8",
+      "name": "ItemIdKey_Equals",
+      "subsystem": "PSZ_Effect",
+      "provenance": "compares 4-byte ItemIdKey descriptors byte-by-byte"
+    },
+    {
+      "addr": "0x02045920",
+      "fun": "FUN_02045920",
+      "name": "ItemModelPool_MatchesSlot",
+      "subsystem": "PSZ_Effect",
+      "provenance": "checks whether valid item pool slot matches key"
+    },
+    {
+      "addr": "0x02045948",
+      "fun": "FUN_02045948",
+      "name": "ItemModelPool_GetResPtr",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns cached sub-resource pointer for valid item pool slot"
+    },
+    {
+      "addr": "0x02045970",
+      "fun": "FUN_02045970",
+      "name": "ItemModelPool_SetSlotKey",
+      "subsystem": "PSZ_Effect",
+      "provenance": "stores 4-byte ItemIdKey into valid item pool slot"
+    },
+    {
+      "addr": "0x02045990",
+      "fun": "FUN_02045990",
+      "name": "ItemIdKey_Copy",
+      "subsystem": "PSZ_Effect",
+      "provenance": "copies 4-byte ItemIdKey byte-by-byte"
+    },
+    {
+      "addr": "0x020459a4",
+      "fun": "FUN_020459a4",
+      "name": "ItemModelPool_IsSlotReady",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns 1 if valid item pool slot has allocated buffer"
+    },
+    {
+      "addr": "0x020459c8",
+      "fun": "FUN_020459c8",
+      "name": "WeaponModelPool_Init",
+      "subsystem": "PSZ_Effect",
+      "provenance": "allocates four 11,520-byte dual-hand weapon model scratch pools"
+    },
+    {
+      "addr": "0x02045a38",
+      "fun": "FUN_02045a38",
+      "name": "WeaponModelPool_Reset",
+      "subsystem": "PSZ_Effect",
+      "provenance": "frees all 4 dual-hand weapon model scratch pools and clears keys/ptrs"
+    },
+    {
+      "addr": "0x02045aac",
+      "fun": "FUN_02045aac",
+      "name": "WeaponModelPool_Invalidate",
+      "subsystem": "PSZ_Effect",
+      "provenance": "resets valid dual-hand weapon pool slot if primary ItemIdKey differs"
+    },
+    {
+      "addr": "0x02045b1c",
+      "fun": "FUN_02045b1c",
+      "name": "WeaponModelPool_MatchesSlot",
+      "subsystem": "PSZ_Effect",
+      "provenance": "checks whether valid weapon pool slot + hand matches key"
+    },
+    {
+      "addr": "0x02045b50",
+      "fun": "FUN_02045b50",
+      "name": "WeaponModelPool_GetResPtr",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns cached sub-resource ptr for valid weapon pool slot + res + hand"
+    },
+    {
+      "addr": "0x02045b84",
+      "fun": "FUN_02045b84",
+      "name": "WeaponModelPool_SetSlotKey",
+      "subsystem": "PSZ_Effect",
+      "provenance": "stores 4-byte weapon ItemIdKey into valid weapon pool slot + hand"
+    },
+    {
+      "addr": "0x02045bb4",
+      "fun": "FUN_02045bb4",
+      "name": "WeaponModelPool_IsSlotReady",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns 1 if valid weapon pool slot has allocated buffer"
+    },
+    {
+      "addr": "0x02045bd8",
+      "fun": "FUN_02045bd8",
+      "name": "WeaponZarc_LoadAssetAsync",
+      "subsystem": "PSZ_Effect",
+      "provenance": "bump-allocates Mag/Weapon scratch buffer and starts ZARC_ReadEntryAsync on item/weapon.zarc"
+    },
+    {
+      "addr": "0x02045ce4",
+      "fun": "FUN_02045ce4",
+      "name": "WeaponZarc_ResolveEntryIndex",
+      "subsystem": "PSZ_Effect",
+      "provenance": "resolves item (cat, tier, sub) + slot/hand to 10-bit item/weapon.zarc entry index"
+    },
+    {
+      "addr": "0x02045e30",
+      "fun": "FUN_02045e30",
+      "name": "WeaponIdDB_GetTierFlatIndex",
+      "subsystem": "PSZ_Effect",
+      "provenance": "computes flat weapon model table index from category, tier (0..3), and sub_id"
+    },
+    {
+      "addr": "0x02045e90",
+      "fun": "FUN_02045e90",
+      "name": "EffectRes_RegisterSet",
+      "subsystem": "PSZ_Effect",
+      "provenance": "registers model, bound texture, and up to 5 anims into EffectResHandles"
+    },
+    {
+      "addr": "0x02045f84",
+      "fun": "FUN_02045f84",
+      "name": "EffectRes_UnregisterSet",
+      "subsystem": "PSZ_Effect",
+      "provenance": "unregisters all 5 anims, texture, and model in EffectResHandles"
+    },
+    {
+      "addr": "0x02045fd8",
+      "fun": "FUN_02045fd8",
+      "name": "EffectRes_BindSharedTex",
+      "subsystem": "PSZ_Effect",
+      "provenance": "binds shared texture handle to registered effect model"
+    },
+    {
+      "addr": "0x02046000",
+      "fun": "FUN_02046000",
+      "name": "WeaponIdDB_GetMuzzleByParts",
+      "subsystem": "PSZ_Effect",
+      "provenance": "packs (cat, tier, sub) into ItemIdKey and queries WeaponIdDB_GetMuzzleOffset"
+    },
+    {
+      "addr": "0x02046020",
+      "fun": "FUN_02046020",
+      "name": "WeaponIdDB_GetMuzzleOffset",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns 3D projectile muzzle offset VecFx32 for ranged categories 8..13"
+    },
+    {
+      "addr": "0x020461f8",
+      "fun": "FUN_020461f8",
+      "name": "MagParamDB_GetAttachOffset",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns 3D follow/attachment offset VecFx32 for Mag ID 0..32"
+    },
+    {
+      "addr": "0x0204624c",
+      "fun": "FUN_0204624c",
+      "name": "WeaponIdDB_GetSlicerOffset",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns 3D offset VecFx32 for Slicer weapons (category 16)"
+    },
+    {
+      "addr": "0x020462c8",
+      "fun": "FUN_020462c8",
+      "name": "WeaponIdDB_GetDefaultOffset",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns default weapon offset VecFx32 from EffectArchiveBank"
+    },
+    {
+      "addr": "0x020462f0",
+      "fun": "FUN_020462f0",
+      "name": "WeaponIdDB_GetBulletByParts",
+      "subsystem": "PSZ_Effect",
+      "provenance": "packs (cat, tier, sub) into ItemIdKey and queries WeaponIdDB_GetBulletEffectId"
+    },
+    {
+      "addr": "0x0204630c",
+      "fun": "FUN_0204630c",
+      "name": "WeaponIdDB_GetBulletEffectId",
+      "subsystem": "PSZ_Effect",
+      "provenance": "extracts 10-bit bullet visual-effect ID for ranged categories 8..13"
+    },
+    {
+      "addr": "0x02046390",
+      "fun": "FUN_02046390",
+      "name": "ElementColor_GetByIndex",
+      "subsystem": "PSZ_Effect",
+      "provenance": "reads element RGB555 color from 9-entry g_ElementColorTable"
+    },
+    {
+      "addr": "0x020463b8",
+      "fun": "FUN_020463b8",
+      "name": "EffectIdDB_GetClassEntry",
+      "subsystem": "PSZ_Effect",
+      "provenance": "returns 8B EffectClassEntry from primary or alternate effect class table"
+    },
+    {
+      "addr": "0x0204641c",
+      "fun": "FUN_0204641c",
+      "name": "WeaponArchive_Acquire",
+      "subsystem": "PSZ_Item",
+      "provenance": "ref-counted open of item/weapon.zarc"
+    },
+    {
+      "addr": "0x0204644c",
+      "fun": "FUN_0204644c",
+      "name": "WeaponArchive_Reset",
+      "subsystem": "PSZ_Item",
+      "provenance": "destroys g_WeaponArchive.zarc and resets ref_count/state"
+    },
+    {
+      "addr": "0x02046474",
+      "fun": "FUN_02046474",
+      "name": "WeaponArchive_Release",
+      "subsystem": "PSZ_Item",
+      "provenance": "decrements ref_count and schedules deferred ZARC destroy"
+    },
+    {
+      "addr": "0x020464b0",
+      "fun": "FUN_020464b0",
+      "name": "WeaponArchive_GetRefCount",
+      "subsystem": "PSZ_Item",
+      "provenance": "returns g_WeaponArchive.ref_count"
+    },
+    {
+      "addr": "0x020464bc",
+      "fun": "FUN_020464bc",
+      "name": "WeaponArchive_GetState",
+      "subsystem": "PSZ_Item",
+      "provenance": "returns g_WeaponArchive.state"
+    },
+    {
+      "addr": "0x020464c8",
+      "fun": "FUN_020464c8",
+      "name": "WeaponArchive_ClearState",
+      "subsystem": "PSZ_Item",
+      "provenance": "zeroes g_WeaponArchive.state"
+    },
+    {
+      "addr": "0x0205013c",
+      "fun": "FUN_0205013c",
+      "name": "StageObjectBank_Dtor",
+      "subsystem": "PSZ_Object",
+      "provenance": "destroys StageObjectBank via StageObjectBank_Unload"
+    },
+    {
+      "addr": "0x02050148",
+      "fun": "FUN_02050148",
+      "name": "StageObjectBank_Load",
+      "subsystem": "PSZ_Object",
+      "provenance": "loads object/%s_{mdl.narc,tex.narc,prm.rel} and registers 3D assets"
+    },
+    {
+      "addr": "0x02050200",
+      "fun": "FUN_02050200",
+      "name": "StageObjectRecord_GetKey",
+      "subsystem": "PSZ_Object",
+      "provenance": "packs signed (type, subtype) pair into 32-bit binary search key"
+    },
+    {
+      "addr": "0x02050210",
+      "fun": "FUN_02050210",
+      "name": "StageObjectBank_Unload",
+      "subsystem": "PSZ_Object",
+      "provenance": "unregisters 3D assets, frees prm.rel, and deletes mdl/tex NARCs"
+    },
+    {
+      "addr": "0x02050250",
+      "fun": "FUN_02050250",
+      "name": "StageObjectBank_RegisterAssets",
+      "subsystem": "PSZ_Object",
+      "provenance": "registers 2 models + 2 textures + 3 anims per StageObjectRecord"
+    },
+    {
+      "addr": "0x02050364",
+      "fun": "FUN_02050364",
+      "name": "StageObjectBank_UnregisterAssets",
+      "subsystem": "PSZ_Object",
+      "provenance": "unregisters all 3D object handles and frees handle table"
+    },
+    {
+      "addr": "0x02050420",
+      "fun": "FUN_02050420",
+      "name": "StageObjectBank_GetRecord",
+      "subsystem": "PSZ_Object",
+      "provenance": "indexed 36-byte StageObjectRecord lookup"
+    },
+    {
+      "addr": "0x02050440",
+      "fun": "FUN_02050440",
+      "name": "StageObjectBank_FindIndex",
+      "subsystem": "PSZ_Object",
+      "provenance": "binary search over sorted StageObjectRecords by (type, subtype)"
+    },
+    {
+      "addr": "0x020504a4",
+      "fun": "FUN_020504a4",
+      "name": "StageObjectBank_GetHandles",
+      "subsystem": "PSZ_Object",
+      "provenance": "indexed 14-byte StageObjectResHandles lookup"
+    },
+    {
+      "addr": "0x020504bc",
+      "fun": "FUN_020504bc",
+      "name": "StageObjectBank_GetModelFile",
+      "subsystem": "PSZ_Object",
+      "provenance": "NARC lookup into bank->mdl_narc (object/%s_mdl.narc)"
+    },
+    {
+      "addr": "0x020504d4",
+      "fun": "FUN_020504d4",
+      "name": "StageObjectBank_GetTextureFile",
+      "subsystem": "PSZ_Object",
+      "provenance": "NARC lookup into bank->tex_narc (object/%s_tex.narc)"
+    },
+    {
+      "addr": "0x02050624",
+      "fun": "FUN_02050624",
+      "name": "StageObjectManager_LoadStageBank",
+      "subsystem": "PSZ_Object",
+      "provenance": "loads stage object bank %02d/o%02d%c into bank 0 and caches 5 special model handles"
+    },
+    {
+      "addr": "0x020506bc",
+      "fun": "FUN_020506bc",
+      "name": "StageObjectManager_ClearBank0",
+      "subsystem": "PSZ_Object",
+      "provenance": "resets special handles +0x48 and unloads bank 0"
+    },
+    {
+      "addr": "0x020507e0",
+      "fun": "FUN_020507e0",
+      "name": "StageObjectManager_ClearBank1",
+      "subsystem": "PSZ_Object",
+      "provenance": "tears down aux manager and unloads bank 1"
+    },
+    {
+      "addr": "0x020507f4",
+      "fun": "FUN_020507f4",
+      "name": "StageObject_ClassifyRoomKind",
+      "subsystem": "PSZ_Object",
+      "provenance": "classifies room descriptor into stage-object kind 0..12"
+    },
+    {
+      "addr": "0x020508ac",
+      "fun": "FUN_020508ac",
+      "name": "StageObjectManager_GetRecord",
+      "subsystem": "PSZ_Object",
+      "provenance": "resolves StageObjectRef to 36-byte StageObjectRecord"
+    },
+    {
+      "addr": "0x020508ec",
+      "fun": "FUN_020508ec",
+      "name": "StageObjectManager_GetHandles",
+      "subsystem": "PSZ_Object",
+      "provenance": "resolves StageObjectRef to 14-byte StageObjectResHandles"
+    },
+    {
+      "addr": "0x02050938",
+      "fun": "FUN_02050938",
+      "name": "StageObjectManager_ResolveFromEntity",
+      "subsystem": "PSZ_Object",
+      "provenance": "resolves StageObjectRef from StageEntitySpawn (type, subtype)"
+    },
+    {
+      "addr": "0x02050948",
+      "fun": "FUN_02050948",
+      "name": "StageObjectManager_ResolveRef",
+      "subsystem": "PSZ_Object",
+      "provenance": "searches all 3 StageObjectBanks for (type, subtype)"
+    },
+    {
+      "addr": "0x02056f40",
+      "fun": "FUN_02056f40",
+      "name": "CP_SaveContext",
+      "subsystem": "NitroSDK_CP",
+      "provenance": "reads 0x04000280..0x040002b8 divider/sqrt context"
+    },
+    {
+      "addr": "0x02056f80",
+      "fun": "FUN_02056f80",
+      "name": "CP_RestoreContext",
+      "subsystem": "NitroSDK_CP",
+      "provenance": "restores 0x04000280..0x040002b8 divider/sqrt context"
+    },
+    {
+      "addr": "0x02057388",
+      "fun": "FUN_02057388",
+      "name": "CTRDGi_InitModuleInfo",
+      "subsystem": "NitroSDK_CTRDG",
+      "provenance": "byte-matched REG_EXMEMCNT/GBA cartridge init"
+    },
+    {
+      "addr": "0x02057d30",
+      "fun": "FUN_02057d30",
+      "name": "MATH_SHA1Init",
+      "subsystem": "NitroSDK_MATH",
+      "provenance": "initializes 104-byte SHA-1 context (called by PSZ_GenerateRandomSeed64)"
+    },
+    {
+      "addr": "0x02057d80",
+      "fun": "FUN_02057d80",
+      "name": "MATH_SHA1Update",
+      "subsystem": "NitroSDK_MATH",
+      "provenance": "feeds bytes into SHA-1 context"
+    },
+    {
+      "addr": "0x02057ed4",
+      "fun": "FUN_02057ed4",
+      "name": "MATH_SHA1GetHash",
+      "subsystem": "NitroSDK_MATH",
+      "provenance": "finalizes 20-byte SHA-1 digest"
+    },
+    {
+      "addr": "0x02059cd4",
+      "fun": "FUN_02059cd4",
+      "name": "FS_InitFile",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "initializes 72-byte FSFile structure"
+    },
+    {
+      "addr": "0x02059f44",
+      "fun": "FUN_02059f44",
+      "name": "FS_OpenFileFast",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "opens FSFile by FSFileID pair"
+    },
+    {
+      "addr": "0x02059fb4",
+      "fun": "FUN_02059fb4",
+      "name": "FS_OpenFile",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "opens FSFile by NitroFS path string (called by ZARC_Open)"
+    },
+    {
+      "addr": "0x02059ffc",
+      "fun": "FUN_02059ffc",
+      "name": "FS_CloseFile",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "closes FSFile handle"
+    },
+    {
+      "addr": "0x0205a140",
+      "fun": "FUN_0205a140",
+      "name": "FS_ReadFileAsync",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "initiates async NitroFS read"
+    },
+    {
+      "addr": "0x0205a150",
+      "fun": "FUN_0205a150",
+      "name": "FS_ReadFile",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "synchronous NitroFS read"
+    },
+    {
+      "addr": "0x0205a160",
+      "fun": "FUN_0205a160",
+      "name": "FS_SeekFile",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "seeks FSFile stream position (called by ZARC_FindEntry/ReadEntry*)"
+    },
+    {
+      "addr": "0x0205a624",
+      "fun": "FUN_0205a624",
+      "name": "FS_LoadOverlayInfo",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "reads ARM9/ARM7 OVT entry into 44-byte FSOverlayInfo"
+    },
+    {
+      "addr": "0x0205a720",
+      "fun": "FUN_0205a720",
+      "name": "FS_LoadOverlayImageAsync",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "opens overlay file and starts async image read"
+    },
+    {
+      "addr": "0x0205a840",
+      "fun": "FUN_0205a840",
+      "name": "FS_StartOverlay",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "runs overlay static ctors and marks overlay active"
+    },
+    {
+      "addr": "0x0205aa24",
+      "fun": "FUN_0205aa24",
+      "name": "FS_UnloadOverlayImage",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "runs overlay dtors and unloads image"
+    },
+    {
+      "addr": "0x0205aa34",
+      "fun": "FUN_0205aa34",
+      "name": "FS_UnloadOverlay",
+      "subsystem": "NitroSDK_FS",
+      "provenance": "FS_LoadOverlayInfo + FS_UnloadOverlayImage"
+    },
+    {
+      "addr": "0x0205aa80",
+      "fun": "FUN_0205aa80",
+      "name": "MTX_Identity33_",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "stores FX32_ONE=0x1000 diagonal into 3x3 matrix"
+    },
+    {
+      "addr": "0x0205aaa4",
+      "fun": "FUN_0205aaa4",
+      "name": "MTX_Copy33_",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "3x ldm/stm 36-byte MtxFx33 copy"
+    },
+    {
+      "addr": "0x0205aad0",
+      "fun": "FUN_0205aad0",
+      "name": "MTX_ScaleApply33",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "scales 3 rows of MtxFx33 by (x, y, z)"
+    },
+    {
+      "addr": "0x0205ab90",
+      "fun": "FUN_0205ab90",
+      "name": "MTX_RotX33_",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "builds 3x3 X-axis rotation matrix from (sin, cos)"
+    },
+    {
+      "addr": "0x0205abe0",
+      "fun": "FUN_0205abe0",
+      "name": "MTX_Inverse33",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "3x3 cofactor matrix inverse using FX_InvAsync"
+    },
+    {
+      "addr": "0x0205aed0",
+      "fun": "FUN_0205aed0",
+      "name": "MTX_Concat33",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "3x3 fixed-point matrix multiplication (ab = a * b)"
+    },
+    {
+      "addr": "0x0205b0f0",
+      "fun": "FUN_0205b0f0",
+      "name": "MTX_MultVec33",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "transforms VecFx32 by MtxFx33"
+    },
+    {
+      "addr": "0x0205b16c",
+      "fun": "FUN_0205b16c",
+      "name": "MTX_Identity43_",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "stores FX32_ONE=0x1000 diagonal into 4x3 matrix"
+    },
+    {
+      "addr": "0x0205b1c8",
+      "fun": "FUN_0205b1c8",
+      "name": "MTX_TransApply43",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "applies local translation (x, y, z) to MtxFx43"
+    },
+    {
+      "addr": "0x0205b274",
+      "fun": "FUN_0205b274",
+      "name": "MTX_ScaleApply43",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "scales 3x3 basis of MtxFx43 and preserves translation"
+    },
+    {
+      "addr": "0x0205b300",
+      "fun": "FUN_0205b300",
+      "name": "MTX_Inverse43",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "4x3 affine matrix inverse using FX_InvAsync"
+    },
+    {
+      "addr": "0x0205b68c",
+      "fun": "FUN_0205b68c",
+      "name": "MTX_Concat43",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "4x3 affine fixed-point matrix multiplication"
+    },
+    {
+      "addr": "0x0205b960",
+      "fun": "FUN_0205b960",
+      "name": "MTX_MultVec43",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "transforms VecFx32 by MtxFx43"
+    },
+    {
+      "addr": "0x0205ba00",
+      "fun": "FUN_0205ba00",
+      "name": "MTX_LookAt",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "right-handed camera view matrix via VEC_Normalize/Cross/Dot"
+    },
+    {
+      "addr": "0x0205bb08",
+      "fun": "FUN_0205bb08",
+      "name": "MTX_Identity44_",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "stores FX32_ONE=0x1000 diagonal into 4x4 matrix"
+    },
+    {
+      "addr": "0x0205bb68",
+      "fun": "FUN_0205bb68",
+      "name": "MTX_Concat44",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "4x4 fixed-point matrix multiplication"
+    },
+    {
+      "addr": "0x0205c1cc",
+      "fun": "FUN_0205c1cc",
+      "name": "MTX_PerspectiveW",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "4x4 perspective projection matrix scaled by scaleW"
+    },
+    {
+      "addr": "0x0205c318",
+      "fun": "FUN_0205c318",
+      "name": "MTX_OrthoW",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "4x4 orthographic projection matrix scaled by scaleW"
+    },
+    {
+      "addr": "0x0205c520",
+      "fun": "FUN_0205c520",
+      "name": "FX_Div",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "FX_DivAsync + FX_GetDivResult"
+    },
+    {
+      "addr": "0x0205c530",
+      "fun": "FUN_0205c530",
+      "name": "FX_Inv",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "FX_InvAsync + FX_GetDivResult"
+    },
+    {
+      "addr": "0x0205c540",
+      "fun": "FUN_0205c540",
+      "name": "FX_Sqrt",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "64-bit hardware sqrt -> FX_GetSqrtResult"
+    },
+    {
+      "addr": "0x0205c574",
+      "fun": "FUN_0205c574",
+      "name": "FX_InvSqrt",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "overlapped FX_InvAsync + FX_SqrtAsync rounded 1/sqrt(x)"
+    },
+    {
+      "addr": "0x0205c5dc",
+      "fun": "FUN_0205c5dc",
+      "name": "FX_GetDivResultFx64c",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "waits REG_DIVCNT busy bit and reads REG_DIV_RESULT"
+    },
+    {
+      "addr": "0x0205c600",
+      "fun": "FUN_0205c600",
+      "name": "FX_GetDivResult",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "waits REG_DIVCNT and rounds REG_DIV_RESULT to fx32"
+    },
+    {
+      "addr": "0x0205c638",
+      "fun": "FUN_0205c638",
+      "name": "FX_InvAsync",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "launches 64/32 hardware divide for FX32_ONE / denom"
+    },
+    {
+      "addr": "0x0205c668",
+      "fun": "FUN_0205c668",
+      "name": "FX_SqrtAsync",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "launches 64-bit hardware sqrt"
+    },
+    {
+      "addr": "0x0205c6ac",
+      "fun": "FUN_0205c6ac",
+      "name": "FX_GetSqrtResult",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "waits REG_SQRTCNT and rounds REG_SQRT_RESULT to fx32"
+    },
+    {
+      "addr": "0x0205c6d8",
+      "fun": "FUN_0205c6d8",
+      "name": "FX_DivAsync",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "launches 64/32 hardware divide for numer / denom"
+    },
+    {
+      "addr": "0x0205c700",
+      "fun": "FUN_0205c700",
+      "name": "FX_DivS32",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "32-bit signed hardware integer divide"
+    },
+    {
+      "addr": "0x0205c73c",
+      "fun": "FUN_0205c73c",
+      "name": "FX_ModS32",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "32-bit signed hardware integer remainder"
+    },
+    {
+      "addr": "0x0205c778",
+      "fun": "FUN_0205c778",
+      "name": "VEC_Add",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "component-wise VecFx32 addition"
+    },
+    {
+      "addr": "0x0205c7ac",
+      "fun": "FUN_0205c7ac",
+      "name": "VEC_DotProduct",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "rounded 64-bit VecFx32 dot product"
+    },
+    {
+      "addr": "0x0205c7e8",
+      "fun": "FUN_0205c7e8",
+      "name": "VEC_CrossProduct",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "rounded 64-bit VecFx32 cross product"
+    },
+    {
+      "addr": "0x0205c86c",
+      "fun": "FUN_0205c86c",
+      "name": "VEC_Mag",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "VecFx32 Euclidean length via 64-bit hardware sqrt"
+    },
+    {
+      "addr": "0x0205c8cc",
+      "fun": "FUN_0205c8cc",
+      "name": "VEC_Normalize",
+      "subsystem": "NitroSDK_FX",
+      "provenance": "byte-matched hardware div/sqrt 3D vector normalize"
+    },
+    {
+      "addr": "0x0206132c",
+      "fun": "FUN_0206132c",
+      "name": "MB_ReadSegment",
+      "subsystem": "NitroSDK_MB",
+      "provenance": "byte-matched DS Download Play multiboot segment reader"
+    },
+    {
+      "addr": "0x020654b4",
+      "fun": "FUN_020654b4",
+      "name": "MI_CpuFill16",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK 16-bit CPU fill loop"
+    },
+    {
+      "addr": "0x020654dc",
+      "fun": "FUN_020654dc",
+      "name": "MI_CpuCopy16",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK 16-bit CPU copy loop"
+    },
+    {
+      "addr": "0x02065510",
+      "fun": "FUN_02065510",
+      "name": "MI_CpuFill32",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK 32-bit CPU fill loop"
+    },
+    {
+      "addr": "0x0206552c",
+      "fun": "FUN_0206552c",
+      "name": "MI_CpuCopy32",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK 32-bit CPU copy loop"
+    },
+    {
+      "addr": "0x02065554",
+      "fun": "FUN_02065554",
+      "name": "MI_CpuSend32",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK 32-bit FIFO send loop"
+    },
+    {
+      "addr": "0x0206557c",
+      "fun": "FUN_0206557c",
+      "name": "MI_CpuFillFast",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK 32-byte burst fill (120 callers)"
+    },
+    {
+      "addr": "0x020655d8",
+      "fun": "FUN_020655d8",
+      "name": "MI_CpuCopyFast",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK 32-byte burst copy"
+    },
+    {
+      "addr": "0x0206564c",
+      "fun": "FUN_0206564c",
+      "name": "MI_Copy36B",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "3x 12-byte ldmia/stmia"
+    },
+    {
+      "addr": "0x02065668",
+      "fun": "FUN_02065668",
+      "name": "MI_Copy48B",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "4x 12-byte ldmia/stmia"
+    },
+    {
+      "addr": "0x0206568c",
+      "fun": "FUN_0206568c",
+      "name": "MI_Copy64B",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "5x 12-byte + 4-byte ldmia/stmia"
+    },
+    {
+      "addr": "0x020656b8",
+      "fun": "FUN_020656b8",
+      "name": "MI_CpuFill8",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK byte-fill routine (153 callers)"
+    },
+    {
+      "addr": "0x02065774",
+      "fun": "FUN_02065774",
+      "name": "MI_CpuCopy8",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "exact NitroSDK byte-copy routine (142 callers)"
+    },
+    {
+      "addr": "0x020658f4",
+      "fun": "FUN_020658f4",
+      "name": "MI_Zero36B",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "Thumb 3x 12-byte zero store"
+    },
+    {
+      "addr": "0x02065904",
+      "fun": "FUN_02065904",
+      "name": "MI_SwapWord",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "swp r0, r0, [r1]; bx lr"
+    },
+    {
+      "addr": "0x0206590c",
+      "fun": "FUN_0206590c",
+      "name": "MI_UncompressLZ8",
+      "subsystem": "NitroSDK_MI",
+      "provenance": "LZ77 decompression called by NARC_DecompressAndMount"
+    },
+    {
+      "addr": "0x020662b4",
+      "fun": "FUN_020662b4",
+      "name": "OS_SNPrintf",
+      "subsystem": "NitroSDK_OS",
+      "provenance": "NitroSDK formatted string writer called by ItemParamDB_LoadAll"
+    },
+    {
+      "addr": "0x0206740c",
+      "fun": "FUN_0206740c",
+      "name": "DC_FlushRange",
+      "subsystem": "NitroSDK_OS",
+      "provenance": "ARM9 data cache flush called after MI_UncompressLZ8"
+    },
+    {
+      "addr": "0x020683d4",
+      "fun": "FUN_020683d4",
+      "name": "OS_DisableInterrupts",
+      "subsystem": "NitroSDK_OS",
+      "provenance": "mrs/orr #0x80/msr cpsr_c (202 callers)"
+    },
+    {
+      "addr": "0x020683e8",
+      "fun": "FUN_020683e8",
+      "name": "OS_RestoreInterrupts",
+      "subsystem": "NitroSDK_OS",
+      "provenance": "mrs/bic #0x80/orr/msr cpsr_c (200 callers)"
+    },
+    {
+      "addr": "0x02068444",
+      "fun": "FUN_02068444",
+      "name": "OS_SpinWait",
+      "subsystem": "NitroSDK_OS",
+      "provenance": "subs r0, r0, #4; bcs; bx lr"
+    },
+    {
+      "addr": "0x02068594",
+      "fun": "FUN_02068594",
+      "name": "MATH_CountLeadingZeros",
+      "subsystem": "NitroSDK_MATH",
+      "provenance": "clz r0, r0; bx lr"
+    },
+    {
+      "addr": "0x02068658",
+      "fun": "FUN_02068658",
+      "name": "OS_GetLowEntropyData",
+      "subsystem": "NitroSDK_OS",
+      "provenance": "fills 32-byte hardware entropy seed for SHA-1 RNG seeding"
+    },
+    {
+      "addr": "0x0206e3f0",
+      "fun": "FUN_0206e3f0",
+      "name": "Enemy_Create",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "dispatches g_EnemyFactoryTable[69] (D_020f24c0) into Slot-1 overlay"
+    },
+    {
+      "addr": "0x02071d0c",
+      "fun": "FUN_02071d0c",
+      "name": "vec16_zero",
+      "subsystem": "PSZ_Core",
+      "provenance": "3x s16 zero store (135 callers)"
+    },
+    {
+      "addr": "0x02074d68",
+      "fun": "FUN_02074d68",
+      "name": "FieldOverlay_LoadStageOverlay",
+      "subsystem": "PSZ_Enemy",
+      "provenance": "loads Slot-1 stage/boss overlay from g_StageOverlayTable[9][3] (DAT_020f2740)"
+    },
+    {
+      "addr": "0x020808c4",
+      "fun": "FUN_020808c4",
+      "name": "PAEffect_Load",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads item/paeff%02d.rel"
+    },
+    {
+      "addr": "0x02084394",
+      "fun": "FUN_02084394",
+      "name": "ItemParamDB_Ctor",
+      "subsystem": "PSZ_Item",
+      "provenance": "zeroes 8 RelResourceSlots, runs DS Protect check, calls ItemParamDB_LoadAll"
+    },
+    {
+      "addr": "0x020843e8",
+      "fun": "FUN_020843e8",
+      "name": "ItemParamDB_LoadAll",
+      "subsystem": "PSZ_Item",
+      "provenance": "loads item/{genprm,proprm,uniprm,wpnprm}.rel via D_020fa934"
+    },
+    {
+      "addr": "0x0208447c",
+      "fun": "FUN_0208447c",
+      "name": "ItemParamDB_ReleasePlayerEquip",
+      "subsystem": "PSZ_Item",
+      "provenance": "releases per-player wpneqprm slots 4..7 and deletes wpneqprm.zarc"
+    },
+    {
+      "addr": "0x020844b0",
+      "fun": "FUN_020844b0",
+      "name": "ItemSystem_Shutdown",
+      "subsystem": "PSZ_Item",
+      "provenance": "destroys ItemParamDB and clears DAT_0211a500"
+    },
+    {
+      "addr": "0x020844e4",
+      "fun": "FUN_020844e4",
+      "name": "ItemParamDB_GetWeaponNibble",
+      "subsystem": "PSZ_Item",
+      "provenance": "extracts packed 4-bit weapon attribute from wpnprm.rel"
+    },
+    {
+      "addr": "0x02084534",
+      "fun": "FUN_02084534",
+      "name": "WeaponParamTable_FindIndex",
+      "subsystem": "PSZ_Item",
+      "provenance": "resolves weapon (type 0..16, tier 0..3, sub_id) to flat index"
+    },
+    {
+      "addr": "0x02084568",
+      "fun": "FUN_02084568",
+      "name": "ItemParamDB_GetWeaponRecord",
+      "subsystem": "PSZ_Item",
+      "provenance": "resolves 12-byte weapon record from wpnprm.rel"
+    },
+    {
+      "addr": "0x020845a8",
+      "fun": "FUN_020845a8",
+      "name": "ItemParamDB_GetArmorRecord",
+      "subsystem": "PSZ_Item",
+      "provenance": "resolves 16-byte armor record from proprm.rel"
+    },
+    {
+      "addr": "0x020845fc",
+      "fun": "FUN_020845fc",
+      "name": "ItemParamDB_GetUnitRecord",
+      "subsystem": "PSZ_Item",
+      "provenance": "resolves 9-byte slot-unit record from uniprm.rel"
+    },
+    {
+      "addr": "0x02084638",
+      "fun": "FUN_02084638",
+      "name": "ItemParamDB_GetGeneralRecord",
+      "subsystem": "PSZ_Item",
+      "provenance": "resolves 4-byte general item record from genprm.rel"
+    },
+    {
+      "addr": "0x02084684",
+      "fun": "FUN_02084684",
+      "name": "ItemParamDB_GetPlayerWeaponEquip",
+      "subsystem": "PSZ_Item",
+      "provenance": "unpacks 18B weapon equip stats + 3x 5-bit PA values"
+    },
+    {
+      "addr": "0x02084734",
+      "fun": "FUN_02084734",
+      "name": "RelResource_GetTable",
+      "subsystem": "PSZ_Item",
+      "provenance": "lazily resolves raw .rel buffer via Rel_ResolveTable"
+    },
+    {
+      "addr": "0x02084758",
+      "fun": "FUN_02084758",
+      "name": "Item_GetElementTableEntry",
+      "subsystem": "PSZ_Item",
+      "provenance": "indexed class/technique max level cap lookup DAT_020f3010[11][7]"
+    },
+    {
+      "addr": "0x02084778",
+      "fun": "FUN_02084778",
+      "name": "Item_GetSetBonusEntry",
+      "subsystem": "PSZ_Item",
+      "provenance": "14-byte lookup in 11x15 technique parameter table DAT_020f33b0[165]"
+    },
+    {
+      "addr": "0x02084798",
+      "fun": "FUN_02084798",
+      "name": "Weapon_GetPhotonArtEntry",
+      "subsystem": "PSZ_Item",
+      "provenance": "7-byte PA lookup across 16 weapon categories x 3 variants"
+    },
+    {
+      "addr": "0x020847c8",
+      "fun": "FUN_020847c8",
+      "name": "ItemParamDB_LoadPlayerWeaponEquip",
+      "subsystem": "PSZ_Item",
+      "provenance": "opens item/wpneqprm.zarc and extracts player slot entry"
+    },
+    {
+      "addr": "0x02084830",
+      "fun": "FUN_02084830",
+      "name": "RelResource_LoadFromZarc",
+      "subsystem": "PSZ_Item",
+      "provenance": "extracts ZARC entry into 16B-aligned RelResourceSlot"
+    },
+    {
+      "addr": "0x02084868",
+      "fun": "FUN_02084868",
+      "name": "RelResource_Load",
+      "subsystem": "PSZ_Item",
+      "provenance": "loads .rel file from NitroFS and resolves table pointer"
+    },
+    {
+      "addr": "0x02084890",
+      "fun": "FUN_02084890",
+      "name": "ItemParamDB_Dtor",
+      "subsystem": "PSZ_Item",
+      "provenance": "releases all 8 RelResourceSlots and deletes wpneqprm.zarc"
+    },
+    {
+      "addr": "0x020848b4",
+      "fun": "FUN_020848b4",
+      "name": "RelResource_Release",
+      "subsystem": "PSZ_Item",
+      "provenance": "unregisters and frees RelResourceSlot"
+    },
+    {
+      "addr": "0x020848d0",
+      "fun": "FUN_020848d0",
+      "name": "Item_GetGroupColumn",
+      "subsystem": "PSZ_Item",
+      "provenance": "3-column item group index lookup"
+    },
+    {
+      "addr": "0x020848e0",
+      "fun": "FUN_020848e0",
+      "name": "Item_ClampFieldBySelector",
+      "subsystem": "PSZ_Item",
+      "provenance": "optional u8 truncation via 47-entry selector table"
+    },
+    {
+      "addr": "0x02084900",
+      "fun": "FUN_02084900",
+      "name": "Item_IsStackable",
+      "subsystem": "PSZ_Item",
+      "provenance": "returns 1 if general item stack_limit > 1 (0=99) or category 4"
+    },
+    {
+      "addr": "0x0209b030",
+      "fun": "FUN_0209b030",
+      "name": "DropTable_Load",
+      "subsystem": "PSZ_Item",
+      "provenance": "loads item/drop/%s%d.narc"
+    },
+    {
+      "addr": "0x0209f2e0",
+      "fun": "FUN_0209f2e0",
+      "name": "FieldEffect_Load",
+      "subsystem": "PSZ_Effect",
+      "provenance": "loads scene/fse/%s.{narc,nsbtx}"
+    },
+    {
+      "addr": "0x020a0878",
+      "fun": "FUN_020a0878",
+      "name": "BossCamera_Load",
+      "subsystem": "PSZ_Camera",
+      "provenance": "loads camera/z_000..z_005 boss cutscene cameras"
+    },
+    {
+      "addr": "0x020a0ae4",
+      "fun": "FUN_020a0ae4",
+      "name": "StageMessagePack_Load",
+      "subsystem": "PSZ_Object",
+      "provenance": "loads object/text/message_pack_00..08+99_rare.bin"
+    },
+    {
+      "addr": "0x020ba7f4",
+      "fun": "FUN_020ba7f4",
+      "name": "psz_alloc_aligned",
+      "subsystem": "PSZ_Core",
+      "provenance": "heap allocator called by operator new FUN_020ba894"
+    },
+    {
+      "addr": "0x020ba84c",
+      "fun": "FUN_020ba84c",
+      "name": "psz_free",
+      "subsystem": "PSZ_Core",
+      "provenance": "heap deallocator called by operator delete/delete[]"
+    },
+    {
+      "addr": "0x020ba894",
+      "fun": "FUN_020ba894",
+      "name": "psz_new",
+      "subsystem": "PSZ_Core",
+      "provenance": "C++ operator new wrapper: psz_alloc_aligned(size, 16) (467 callers)"
+    },
+    {
+      "addr": "0x020ba8ac",
+      "fun": "FUN_020ba8ac",
+      "name": "psz_delete",
+      "subsystem": "PSZ_Core",
+      "provenance": "C++ operator delete wrapper -> psz_free (853 callers)"
+    },
+    {
+      "addr": "0x020ba8c4",
+      "fun": "FUN_020ba8c4",
+      "name": "psz_delete_array",
+      "subsystem": "PSZ_Core",
+      "provenance": "C++ operator delete[] wrapper -> psz_free (93 callers)"
+    },
+    {
+      "addr": "0x020bc2dc",
+      "fun": "FUN_020bc2dc",
+      "name": "NARC_Ctor",
+      "subsystem": "PSZ_Archive",
+      "provenance": "132-byte NARC archive loader constructor"
+    },
+    {
+      "addr": "0x020bc324",
+      "fun": "FUN_020bc324",
+      "name": "NARC_Dtor",
+      "subsystem": "PSZ_Archive",
+      "provenance": "unmounts NARC, releases buffers, marks closed"
+    },
+    {
+      "addr": "0x020bc360",
+      "fun": "FUN_020bc360",
+      "name": "NARC_Delete",
+      "subsystem": "PSZ_Archive",
+      "provenance": "deleting destructor for NARCArchive"
+    },
+    {
+      "addr": "0x020bc3a4",
+      "fun": "FUN_020bc3a4",
+      "name": "LZ77_GetUncompressedSize",
+      "subsystem": "PSZ_Archive",
+      "provenance": "reads 24-bit LE uncompressed size from NDS LZ77 header"
+    },
+    {
+      "addr": "0x020bc3c0",
+      "fun": "FUN_020bc3c0",
+      "name": "NARC_LoadSync",
+      "subsystem": "PSZ_Archive",
+      "provenance": "synchronous NARC file load + mount"
+    },
+    {
+      "addr": "0x020bc418",
+      "fun": "FUN_020bc418",
+      "name": "NARC_LoadAsync",
+      "subsystem": "PSZ_Archive",
+      "provenance": "asynchronous NARC file load"
+    },
+    {
+      "addr": "0x020bc474",
+      "fun": "FUN_020bc474",
+      "name": "NARC_OnAsyncDone",
+      "subsystem": "PSZ_Archive",
+      "provenance": "async completion callback (decompress if LZ, else mount)"
+    },
+    {
+      "addr": "0x020bc498",
+      "fun": "FUN_020bc498",
+      "name": "NARC_DecompressAndMount",
+      "subsystem": "PSZ_Archive",
+      "provenance": "LZ77 decompress + DC_FlushRange + NARC_Mount"
+    },
+    {
+      "addr": "0x020bc4dc",
+      "fun": "FUN_020bc4dc",
+      "name": "NARC_Mount",
+      "subsystem": "PSZ_Archive",
+      "provenance": "calls NNS_FndMountArchive and latches mounted state"
+    },
+    {
+      "addr": "0x020bc508",
+      "fun": "FUN_020bc508",
+      "name": "NARC_GetFileByIndex",
+      "subsystem": "PSZ_Archive",
+      "provenance": "returns entry pointer from mounted NARC by index"
+    },
+    {
+      "addr": "0x020bc51c",
+      "fun": "FUN_020bc51c",
+      "name": "NARC_GetFileByName",
+      "subsystem": "PSZ_Archive",
+      "provenance": "returns entry pointer from mounted NARC by name"
+    },
+    {
+      "addr": "0x020bc548",
+      "fun": "FUN_020bc548",
+      "name": "NARC_GetFileSizeByName",
+      "subsystem": "PSZ_Archive",
+      "provenance": "returns byte size of named entry in mounted NARC"
+    },
+    {
+      "addr": "0x020bc578",
+      "fun": "FUN_020bc578",
+      "name": "NARC_AllocBuffer",
+      "subsystem": "PSZ_Archive",
+      "provenance": "allocates NARC payload buffer from custom or global heap"
+    },
+    {
+      "addr": "0x020c3490",
+      "fun": "FUN_020c3490",
+      "name": "OverlaySlot_Init",
+      "subsystem": "PSZ_Core",
+      "provenance": "initializes 128-byte OverlaySlot (overlay_id=-1, loading=0, loaded=0)"
+    },
+    {
+      "addr": "0x020c34c8",
+      "fun": "FUN_020c34c8",
+      "name": "OverlaySlot_Poll",
+      "subsystem": "PSZ_Core",
+      "provenance": "polls in-flight async overlay read"
+    },
+    {
+      "addr": "0x020c34d8",
+      "fun": "FUN_020c34d8",
+      "name": "OverlaySlot_LoadAsync",
+      "subsystem": "PSZ_Core",
+      "provenance": "unloads stale overlay and starts async FS_LoadOverlayImageAsync"
+    },
+    {
+      "addr": "0x020c3538",
+      "fun": "FUN_020c3538",
+      "name": "OverlaySlot_FinishLoad",
+      "subsystem": "PSZ_Core",
+      "provenance": "closes FSFile and invokes FS_StartOverlay when read finishes"
+    },
+    {
+      "addr": "0x020c3ca0",
+      "fun": "FUN_020c3ca0",
+      "name": "ZARC_Open",
+      "subsystem": "PSZ_Archive",
+      "provenance": "88-byte LZ-compressed ZARC archive opener"
+    },
+    {
+      "addr": "0x020c3d04",
+      "fun": "FUN_020c3d04",
+      "name": "ZARC_Dtor",
+      "subsystem": "PSZ_Archive",
+      "provenance": "ZARCArchive non-deleting destructor"
+    },
+    {
+      "addr": "0x020c3d18",
+      "fun": "FUN_020c3d18",
+      "name": "ZARC_Delete",
+      "subsystem": "PSZ_Archive",
+      "provenance": "ZARCArchive deleting destructor"
+    },
+    {
+      "addr": "0x020c3d34",
+      "fun": "FUN_020c3d34",
+      "name": "ZARC_GetEntrySize",
+      "subsystem": "PSZ_Archive",
+      "provenance": "returns unpacked (or raw) size of ZARC entry index, or -1"
+    },
+    {
+      "addr": "0x020c3d58",
+      "fun": "FUN_020c3d58",
+      "name": "ZARC_ReadEntrySync",
+      "subsystem": "PSZ_Archive",
+      "provenance": "reads and decompresses ZARC entry synchronously + DC_FlushRange"
+    },
+    {
+      "addr": "0x020c3dcc",
+      "fun": "FUN_020c3dcc",
+      "name": "ZARC_ReadEntryAsync",
+      "subsystem": "PSZ_Archive",
+      "provenance": "spawns async ZARC read/decompress task"
+    },
+    {
+      "addr": "0x020c3e54",
+      "fun": "FUN_020c3e54",
+      "name": "ZARC_FindEntry",
+      "subsystem": "PSZ_Archive",
+      "provenance": "seeks and reads 48-byte ZarcEntry metadata record"
+    },
+    {
+      "addr": "0x020c3e90",
+      "fun": "FUN_020c3e90",
+      "name": "PSZ_GenerateRandomSeed64",
+      "subsystem": "PSZ_Core",
+      "provenance": "SHA-1 hashes 32B OS_GetLowEntropyData into 64-bit RNG seed"
+    },
+    {
+      "addr": "0x020c3ec4",
+      "fun": "FUN_020c3ec4",
+      "name": "PSZ_StrCatControl1",
+      "subsystem": "PSZ_Core",
+      "provenance": "bounded strcat stopping at NUL or control byte 0x01"
+    },
+    {
+      "addr": "0x020c3f00",
+      "fun": "FUN_020c3f00",
+      "name": "PSZ_StrCopyPadControl1",
+      "subsystem": "PSZ_Core",
+      "provenance": "bounded NUL-padded strcpy stopping at NUL or control byte 0x01"
+    },
+    {
+      "addr": "0x020c3f34",
+      "fun": "FUN_020c3f34",
+      "name": "PSZ_StrNCmp",
+      "subsystem": "PSZ_Core",
+      "provenance": "bounded signed-byte string compare returning 0 on NULL"
+    },
+    {
+      "addr": "0x020c8d2c",
+      "fun": "FUN_020c8d2c",
+      "name": "gpGetBuddyStatus",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string 'gpGetBuddyStatus' in gp.c"
+    },
+    {
+      "addr": "0x020c979c",
+      "fun": "FUN_020c979c",
+      "name": "gpiProcess",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string 'gpiProcess' in gpi.c"
+    },
+    {
+      "addr": "0x020cb068",
+      "fun": "FUN_020cb068",
+      "name": "gpiAppendCharToBuffer",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiBuffer.c"
+    },
+    {
+      "addr": "0x020cb0cc",
+      "fun": "FUN_020cb0cc",
+      "name": "gpiAppendStringToBufferLen",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiBuffer.c"
+    },
+    {
+      "addr": "0x020cb254",
+      "fun": "FUN_020cb254",
+      "name": "gpiSendOrBufferStringLenToPeer",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiBuffer.c"
+    },
+    {
+      "addr": "0x020cb330",
+      "fun": "FUN_020cb330",
+      "name": "gpiRecvToBuffer",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiBuffer.c"
+    },
+    {
+      "addr": "0x020cb474",
+      "fun": "FUN_020cb474",
+      "name": "gpiSendFromBuffer",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiBuffer.c"
+    },
+    {
+      "addr": "0x020cb574",
+      "fun": "FUN_020cb574",
+      "name": "gpiSendBufferToPeer",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiBuffer.c"
+    },
+    {
+      "addr": "0x020cb778",
+      "fun": "FUN_020cb778",
+      "name": "gpiCallErrorCallback",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiCallback.c"
+    },
+    {
+      "addr": "0x020cbb28",
+      "fun": "FUN_020cbb28",
+      "name": "gpiStartConnect",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiConnect.c"
+    },
+    {
+      "addr": "0x020cc950",
+      "fun": "FUN_020cc950",
+      "name": "gpiCheckConnect",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiConnect.c"
+    },
+    {
+      "addr": "0x020cccd4",
+      "fun": "FUN_020cccd4",
+      "name": "gpiIntToDate",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiInfo.c"
+    },
+    {
+      "addr": "0x020ccf44",
+      "fun": "FUN_020ccf44",
+      "name": "gpiProcessGetInfo",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiInfo.c"
+    },
+    {
+      "addr": "0x020ce474",
+      "fun": "FUN_020ce474",
+      "name": "gpiFailedOpCallback",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiOperation.c"
+    },
+    {
+      "addr": "0x020ce764",
+      "fun": "FUN_020ce764",
+      "name": "gpiDestroyOperation",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiOperation.c"
+    },
+    {
+      "addr": "0x020ce860",
+      "fun": "FUN_020ce860",
+      "name": "gpiProcessOperation",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiOperation.c"
+    },
+    {
+      "addr": "0x020cefe0",
+      "fun": "FUN_020cefe0",
+      "name": "gpiRemovePeer",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiPeer.c"
+    },
+    {
+      "addr": "0x020cf714",
+      "fun": "FUN_020cf714",
+      "name": "gpiProfileListAdd",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiProfile.c"
+    },
+    {
+      "addr": "0x020cfa2c",
+      "fun": "FUN_020cfa2c",
+      "name": "gpiStartProfileSearch",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiSearch.c"
+    },
+    {
+      "addr": "0x020d157c",
+      "fun": "FUN_020d157c",
+      "name": "gpiProcessSearches",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiSearch.c"
+    },
+    {
+      "addr": "0x020d191c",
+      "fun": "FUN_020d191c",
+      "name": "gpiValueForKey",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiUtility.c"
+    },
+    {
+      "addr": "0x020d1a30",
+      "fun": "FUN_020d1a30",
+      "name": "gpiReadKeyAndValue",
+      "subsystem": "GameSpy_GP",
+      "provenance": "ROM string in gpiUtility.c"
+    },
+    {
+      "addr": "0x020d3600",
+      "fun": "FUN_020d3600",
+      "name": "gt2Send",
+      "subsystem": "GameSpy_GT2",
+      "provenance": "ROM string in gt2Main.c"
+    },
+    {
+      "addr": "0x020d3754",
+      "fun": "FUN_020d3754",
+      "name": "gt2SetConnectionData",
+      "subsystem": "GameSpy_GT2",
+      "provenance": "ROM string in gt2Main.c"
+    },
+    {
+      "addr": "0x020d377c",
+      "fun": "FUN_020d377c",
+      "name": "gt2GetConnectionData",
+      "subsystem": "GameSpy_GT2",
+      "provenance": "ROM string in gt2Main.c"
+    },
+    {
+      "addr": "0x020d51c0",
+      "fun": "FUN_020d51c0",
+      "name": "gt2StringToAddress",
+      "subsystem": "GameSpy_GT2",
+      "provenance": "ROM string in gt2Utility.c"
+    }
+  ]
+}

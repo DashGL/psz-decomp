@@ -1,0 +1,10 @@
+// FUN_overlay_19__021983a8 @ 0x021983a8 (0x2c, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch25.json; original draft retained for referenced provenance.
+// FUN_overlay_19__021983a8 @ 0x021983a8 (code 0x26, pool extent 0x2c, thumb)
+// check: vers=2.0/sp2p3 target=0x2c candidate=0x2c words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA overlay 19 reconstruction from extracted module bytes, 2026-11-04.
+ * Read flag thirteen and clear through observed second access.
+ * Field identities remain provisional.
+ */
+int FUN_overlay_19__021983a8(volatile unsigned int *p) {int was=(p[53]&0x2000)!=0;p[53]&=0xffffdfff;return was;}

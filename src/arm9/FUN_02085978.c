@@ -1,0 +1,12 @@
+// FUN_02085978 @ 0x02085978 (0x14, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-arm9-2026-11-07-batch18.json; original draft retained for referenced provenance.
+// FUN_02085978 @ 0x02085978 (inventory code 0x10, thumb)
+// check: 2.0/sp2p3 target=0x14 candidate=0x14 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA ROM reconstruction, 2026-11-04.
+ * Install cleanup table, run helper, optionally free receiver; return original receiver.
+ * Field roles remain provisional. Evidence: extracted/arm9/arm9.bin
+ * at named address, disassembly in scratch/coverage-high-game/02085978.txt.
+ */
+extern void FUN_02085e34(void *), FUN_020ba8ac(void *);
+void *FUN_02085978(void **self) { self[0]=(void *)0x020fa97c; FUN_02085e34(self);  return self; }

@@ -1,0 +1,8 @@
+// FUN_020afa4c @ 0x020afa4c (0x124, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-arm9-2026-11-07-batch01.json; original draft retained for referenced provenance.
+// flags: -O4,s
+// check: 2.0/sp2p3 target=0x124 candidate=0x124 words=0 exact_bytes=0 bad_relocs=0
+/* USA ROM reconstruction, 2026-11-04. Accumulate steering influences, limit acceleration and speed, then update orientation.
+ * Evidence: scratch/coverage-high-game/inspect219.txt and 020afa4c.txt. */
+typedef struct{int x,y,z;} Vec;extern Vec UNK_020fc958;extern int FUN_02071188(void),FUN_0205c86c(void *);extern void FUN_02036848(void *,void *),FUN_020afc64(void *,void *),FUN_020afbdc(void *,void *),FUN_020afc40(void *,void *),FUN_020afca0(void *,void *),FUN_020afbac(void *,void *),FUN_02036368(void *),FUN_02083a70(void *,int),FUN_020afdc8(void *),FUN_020afd38(void *);
+void FUN_020afa4c(char *s,void *unused,void *list){Vec sum,a,b,c,d;if(*(int *)(s+60)==0){if(FUN_02071188()>3686)*(int *)(s+60)=10;sum=UNK_020fc958;*(Vec *)(s+72)=*(Vec *)(s+12);FUN_02036848(s+12,s+24);FUN_020afc64(s,list);if(*(int *)(s+56)>0){FUN_020afbdc(&a,s);FUN_02036848(&sum,&a);FUN_0205c86c(&sum);FUN_020afc40(&b,s);FUN_02036848(&sum,&b);FUN_0205c86c(&sum);FUN_020afca0(&c,s);FUN_02036848(&sum,&c);FUN_0205c86c(&sum);}FUN_020afbac(&d,s);FUN_02036848(&sum,&d);FUN_0205c86c(&sum);sum.y=0;if(FUN_0205c86c(&sum)>4){FUN_02036368(&sum);FUN_02083a70(&sum,4);}*(Vec *)(s+84)=*(Vec *)(s+24);FUN_02036848(s+24,&sum);*(int *)(s+52)=FUN_0205c86c(s+24);if(*(int *)(s+52)>102){FUN_02036368(s+24);FUN_02083a70(s+24,102);*(int *)(s+52)=102;}FUN_020afdc8(s);FUN_020afd38(s);}else --*(int *)(s+60);}

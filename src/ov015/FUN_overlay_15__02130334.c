@@ -1,0 +1,4 @@
+// FUN_overlay_15__02130334 @ 0x02130334 (0x2, thumb) - auto-matched by tools/templates.py [empty] (2026-11-04), verified via tools/match.py (word compare + verify_relocs).
+void FUN_overlay_15__02130334(void)
+{
+}

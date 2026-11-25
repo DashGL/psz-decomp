@@ -1,0 +1,8 @@
+// FUN_overlay_24__0219bc24 @ 0x0219bc24 (0xe0, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch2.json; original draft retained for referenced provenance.
+// FUN_overlay_24__0219bc24 @ 0x0219bc24 (full extent 0xe0, thumb)
+// check: vers=2.0/sp2p3 target=0xe0 candidate=0xe0 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* Complete guarded direction selection. ABI evidence: notes/sessions/coverage-overlays-2026-11-05-batch625.md. */
+typedef struct Vec{int x,y,z;}Vec;extern int DAT_0219c8a8,DAT_0219c8ac;extern int FUN_020370b8(void *,int,Vec *),FUN_020370ec(void *,int,Vec *);extern void FUN_02037924(void *);extern int FUN_0205c7ac(const Vec *,const Vec *);extern void FUN_020bbfbc(Vec *,unsigned);extern void FUN_0205c8cc(const Vec *,Vec *);extern void FUN_02091cc0(Vec *,const Vec *,const int *);extern void FUN_02040c0c(void *,int,int,int,int);
+void FUN_overlay_24__0219bc24(char *self){char *state=*(char **)(self+8),*owner=*(char **)(self+4);int id=*(int *)(state+0x4c);unsigned angle;Vec direction,facing,side,first,second;if(!FUN_020370b8(owner,id,&direction)){FUN_02037924(state);return;}angle=0;if(!FUN_020370ec(owner,id,&facing)){FUN_02037924(state);return;}if(FUN_0205c7ac(&facing,&direction)<0){side=direction;FUN_020bbfbc(&side,16384);if(FUN_0205c7ac(&facing,&side)<0)angle=5632;else angle=59904;}FUN_020bbfbc(&direction,angle);if(direction.x||direction.y||direction.z)FUN_0205c8cc(&direction,&direction);FUN_02091cc0(&first,&direction,&DAT_0219c8a8);*(Vec *)(self+24)=first;FUN_02091cc0(&second,&direction,&DAT_0219c8ac);*(Vec *)(self+12)=second;FUN_02040c0c(owner,0,2,4096,0);}

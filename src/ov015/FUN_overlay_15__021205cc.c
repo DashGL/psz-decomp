@@ -1,0 +1,11 @@
+// FUN_overlay_15__021205cc @ 0x021205cc (0x2e, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch17.json; original draft retained for referenced provenance.
+// FUN_overlay_15__021205cc @ 0x021205cc (code 0x2e, pool extent 0x2e, thumb)
+// check: vers=2.0/sp2p3 target=0x2e candidate=0x2e words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA overlay 15 reconstruction from extracted module bytes, 2026-11-04.
+ * Swap equal buffer halves using temporary storage and copy back original length.
+ * Field identities remain provisional.
+ */
+extern void FUN_overlay_15__021206c0(void *,const void *,int);
+void FUN_overlay_15__021205cc(char *p,int n,char *temp) {int half=n/2;FUN_overlay_15__021206c0(temp,p+half,half);FUN_overlay_15__021206c0(temp+half,p,half);FUN_overlay_15__021206c0(p,temp,n);}

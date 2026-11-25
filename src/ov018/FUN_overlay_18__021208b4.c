@@ -1,0 +1,2 @@
+// flags: -O4,s
+void FUN_overlay_18__021208b4(void *unused, char **p) { p[12] = (char *)p + (int)p[12]; p[13] = (char *)p + (int)p[13]; p[14] = (char *)p + (int)p[14]; p[15] = (char *)p + (int)p[15]; p[16] = (char *)p + (int)p[16]; p[17] = (char *)p + (int)p[17]; p[18] = (char *)p + (int)p[18]; p[19] = (char *)p + (int)p[19]; p[20] = (char *)p + (int)p[20]; p[21] = (char *)p + (int)p[21]; p[22] = (char *)p + (int)p[22]; p[23] = (char *)p + (int)p[23]; }

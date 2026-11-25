@@ -1,0 +1,5 @@
+// flags: -O4,s
+/* USA ROM reconstruction, 2026-11-04. Classify resource identifiers for category lookup.
+ * Evidence: scratch/coverage-high-game/inspect255.txt and 020ae5d8.txt. */
+extern unsigned FUN_02093c1c(int,unsigned,unsigned);
+unsigned FUN_020ae5d8(int id,int kind,int flag){int category;if(id==0x4e85||(id>=0x59d8&&id<=0x5dbf))category=1;else if(id==0x4e8c)category=2;else if(id==0x4e8e)category=3;else if(id>=0xc800&&id<=0xc863)category=4;else if(id>=0xc350&&id<=0xc3b3)category=5;else if(id==0xc79f)category=7;else if((id>=0xc738&&id<=0xc79b)||(id>=0xc79c&&id<=0xc7ff)||(id>=0xc864&&id<=0xc8c7))category=6;else if((id>=0xcb20&&id<=0xcb23)||(id>=0xcb84&&id<=0xcb87)||(id>=0xcbe8&&id<=0xcbeb))category=8;else if(id==0x13a2e)category=9;else if((id>=0x4e20&&id<=0x5207)||(id>=0xcb20&&id<=0xcb83)||(id>=0xcb84&&id<=0xcbe7)||(id>=0xcbe8&&id<=0xcc4b)||(id>=0xcc4c&&id<=0xccaf)||(id>=0xcf08&&id<=0xcf6b)||(id>=0xcf6c&&id<=0xcfcf)||(id>=0xcfd0&&id<=0xd033))category=0;else if(kind==7)category=13;else if(flag)category=10;else if(id<0x7918||id>0x7cff)category=11;else category=12;return FUN_02093c1c(0,9,category);}

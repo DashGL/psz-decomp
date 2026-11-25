@@ -1,0 +1,3 @@
+typedef struct { unsigned char b[4]; } Key4;
+extern void FUN_02045848(unsigned char *);
+Key4 FUN_overlay_4__0211ffbc(void *unused,int id){Key4 key;FUN_02045848(key.b);key.b[0]=3;key.b[1]=0;key.b[3]=0;switch(id){case 27:key.b[2]=0;break;case 28:key.b[2]=1;break;case 29:key.b[2]=2;break;case 30:key.b[2]=8;break;case 31:key.b[2]=3;break;case 32:key.b[2]=4;break;case 33:key.b[2]=5;break;case 34:key.b[2]=6;break;case 35:key.b[2]=7;break;case 36:key.b[2]=11;break;case 37:key.b[2]=9;break;case 38:key.b[1]=2;key.b[2]=0;break;case 39:key.b[1]=2;key.b[2]=1;break;case 40:key.b[1]=2;key.b[2]=2;break;case 41:key.b[1]=2;key.b[2]=3;break;default:FUN_02045848(key.b);break;}return key;}

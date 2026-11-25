@@ -1,0 +1,10 @@
+// FUN_overlay_28__0219ba70 @ 0x0219ba70 (0xcc, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch3.json; original draft retained for referenced provenance.
+// FUN_overlay_28__0219ba70 @ 0x0219ba70 (code 0xbe, full extent 0xcc, thumb)
+// check: vers=2.0/sp2p3 target=0xcc candidate=0xcc words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA ROM reconstruction, 2026-11-05. Complete lifecycle/cleanup logic.
+ * ABI evidence: notes/sessions/coverage-overlays-2026-11-05-batch500.md.
+ */
+typedef struct {int x,y,z;} Vec;typedef struct {int envelope,scale;Vec position,primary,secondary,direction;} Frame;extern int FUN_020370b8(void *,int,void *);extern void FUN_02037924(void *);extern void FUN_0205c8cc(void *,void *);extern void FUN_02091cc0(void *,void *,void *);extern void FUN_overlay_28__0219ad24(void *,void *);extern void FUN_020bbfbc(void *,unsigned);extern void FUN_overlay_28__0219acb8(void *,void *,void *,void *);extern void FUN_020bc5cc(void *,void *,void *);extern void FUN_overlay_28__0219ac88(void *,void *);extern int FUN_02040d44(void *,int);extern void FUN_02037254(void *,int,int,void *,int);extern int FUN_02036c34(void *);
+void FUN_overlay_28__0219ba70(int *self) { Frame f;int *state=(int *)self[2];int *owner=(int *)self[1];if(!FUN_020370b8(owner,state[20],&f.direction)){FUN_02037924(state);return;}if(f.direction.x || f.direction.y || f.direction.z)FUN_0205c8cc(&f.direction,&f.direction);FUN_02091cc0(&f.secondary,&f.direction,(void *)0x0219c470);FUN_overlay_28__0219ad24(owner,&f.secondary);FUN_020bbfbc(&f.direction,((unsigned short *)self)[6]);FUN_overlay_28__0219acb8(&f.envelope,owner,self+4,(void *)0x0219c46c);FUN_020bc5cc(&f.scale,&f.envelope,(void *)0x0219c474);FUN_02091cc0(&f.primary,&f.direction,&f.scale);FUN_overlay_28__0219ac88(owner,&f.primary);if(FUN_02040d44(owner,0))FUN_02037924(state);f.position=*(Vec *)(owner+14);FUN_02037254(owner,14,1,&f.position,0);self[4]+=FUN_02036c34(owner); }

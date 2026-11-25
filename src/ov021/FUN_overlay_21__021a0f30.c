@@ -1,0 +1,16 @@
+// flags: -O4,p
+extern void FUN_02042960(void *, int);
+extern void FUN_020bc5cc(void *, const void *, const void *);
+extern int DAT_021a199c, DAT_021a19a0, DAT_021a19a4, DAT_021a19a8, DAT_021a19ac, DAT_021a19b0, DAT_021a19b4, DAT_021a19b8, DAT_021a19bc, DAT_021a19c0;
+void FUN_overlay_21__021a0f30(void) {
+    FUN_02042960(&DAT_021a19c0, 28672);
+    FUN_02042960(&DAT_021a19bc, 122880);
+    FUN_02042960(&DAT_021a19b8, 28672);
+    FUN_02042960(&DAT_021a19b4, 69632);
+    FUN_02042960(&DAT_021a19b0, 2048);
+    FUN_02042960(&DAT_021a19ac, 102400);
+    FUN_02042960(&DAT_021a19a8, 2048);
+    FUN_02042960(&DAT_021a19a4, 8192);
+    FUN_02042960(&DAT_021a19a0, 4096);
+    FUN_020bc5cc(&DAT_021a199c, &DAT_021a19a0, &DAT_021a19a0);
+}

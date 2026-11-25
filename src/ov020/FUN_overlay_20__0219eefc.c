@@ -1,0 +1,16 @@
+// FUN_overlay_20__0219eefc @ 0x0219eefc (0x44, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch21.json; original draft retained for referenced provenance.
+// FUN_overlay_20__0219eefc @ 0x0219eefc (code 0x26, checked pool extent 0x44, thumb)
+// check: vers=2.0/sp2p3 target=0x44 candidate=0x44 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA overlay 20, 2026-11-04: initialize 4 module words through reviewed
+ * resident setter 02042960. Both addresses and values decoded independently
+ * from this module's instructions/pools; symbolic global identities pending.
+ */
+extern void FUN_02042960(void *,unsigned int);
+void FUN_overlay_20__0219eefc(void) {
+    FUN_02042960((void *)0x0219f984,0x177000);
+    FUN_02042960((void *)0x0219f988,0x5dc000);
+    FUN_02042960((void *)0x0219f990,0x1c2000);
+    FUN_02042960((void *)0x0219f98c,0x96000);
+}

@@ -1,0 +1,7 @@
+// Verified 2026-11-13: pinned 2.0/sp2p3, full extent 0xb2, exact bytes and relocation targets.
+// FUN_02046920 @ 0x02046920 (inventory code 0xb2, thumb)
+// flags: -O4,s
+/* USA ROM disassembly reconstruction, 2026-11-04, low-game batch 129.
+ * Object identities are provisional. Evidence: scratch/coverage-low-game-b129/02046920.txt.
+ */
+extern void FUN_02046b20(void *),FUN_02046a78(void *,void *,unsigned int),FUN_020469dc(void *,unsigned int);void FUN_02046920(char *s){char *state;unsigned int flags;int value;*(unsigned int *)(s+4)&=~16u;state=*(char **)(s+20);if(!state||!(*(unsigned int *)(s+4)&4)||!*(int *)(s+36))return;flags=*(unsigned int *)(s+4);if(flags&64){int cur=*(int *)state;unsigned int limit=*(unsigned int *)(s+40)>>12;if(cur>=(int)limit)FUN_02046b20(s);else{value=cur/((int)limit>>12);*(int *)(state+4)=value;*(unsigned int *)(*(char **)(state+16)+4)=4096u-value;}}value=*(unsigned int *)state+*(unsigned int *)(s+36);*(int *)state=value;if(value>=(int)(*(unsigned short *)(*(char **)(state+8)+4)<<12)){flags=*(unsigned int *)(s+4);if(flags&8){if(*(void **)(s+28)){FUN_02046a78(s,*(void **)(s+28),*(unsigned int *)(s+32));*(void **)(s+28)=0;if(*(void **)(s+44))((void (*)(void *))*(void **)(s+44))(*(void **)(s+48));*(void **)(s+44)=0;*(void **)(s+48)=0;}else if(*(unsigned int *)(s+32)){FUN_020469dc(s,*(unsigned int *)(s+32));*(unsigned int *)(s+4)&=~8u;}else *(unsigned int *)(s+4)=flags&~8u;*(unsigned int *)(s+4)|=16;}*(int *)state=0;}}

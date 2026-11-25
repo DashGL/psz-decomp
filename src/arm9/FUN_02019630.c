@@ -1,0 +1,48 @@
+// flags: -O4,p -noThumb
+extern void FUN_0205b16c(void *);
+extern void FUN_0205bb08(void *);
+extern void FUN_0205aa80(void *);
+extern char DAT_0210571c[];
+void *FUN_02019630(void) {
+    char *p = DAT_0210571c;
+    *(unsigned int *)(p + 0x0) = 0x17101610u;
+    *(unsigned int *)(p + 0x4) = 0x0u;
+    *(unsigned int *)(p + 0x48) = 0x2u;
+    *(unsigned int *)(p + 0x7c) = 0x32323232u;
+    *(unsigned int *)(p + 0x90) = 0x60293130u;
+    *(unsigned int *)(p + 0xa4) = 0x33333333u;
+    *(unsigned int *)(p + 0xb8) = 0x2a1b19u;
+    FUN_0205b16c(p + 0x4c);
+    FUN_0205bb08(p + 0x08);
+    *(unsigned int *)(p + 0x80) = 0x2d8b62d8u;
+    *(unsigned int *)(p + 0x84) = 0x40000200u;
+    *(unsigned int *)(p + 0x88) = 0x800001ffu;
+    *(unsigned int *)(p + 0x8c) = 0xc0080000u;
+    *(unsigned int *)(p + 0x94) = 0x4210c210u;
+    *(unsigned int *)(p + 0x98) = 0x4210c210u;
+    *(unsigned int *)(p + 0x9c) = 0x1f008fu;
+    *(unsigned int *)(p + 0xa0) = 0xbfff0000u;
+    *(unsigned int *)(p + 0xa8) = 0x7fffu;
+    *(unsigned int *)(p + 0xac) = 0x4000001fu;
+    *(unsigned int *)(p + 0xb0) = 0x800003e0u;
+    *(unsigned int *)(p + 0xb4) = 0xc0007c00u;
+    *(unsigned int *)(p + 0xe0) = 0x0u;
+    *(unsigned int *)(p + 0xe4) = 0x0u;
+    *(unsigned int *)(p + 0xe8) = 0x0u;
+    FUN_0205aa80(p + 0xbc);
+    *(unsigned int *)(p + 0xec) = 0x1000u;
+    *(unsigned int *)(p + 0xf0) = 0x1000u;
+    *(unsigned int *)(p + 0xf4) = 0x1000u;
+    *(unsigned int *)(p + 0xf8) = 0x0u;
+    *(unsigned int *)(p + 0xfc) = 0x0u;
+    *(unsigned int *)(p + 0x248) = 0x0u;
+    *(unsigned int *)(p + 0x244) = 0x0u;
+    *(unsigned int *)(p + 0x240) = 0x0u;
+    *(unsigned int *)(p + 0x254) = 0x0u;
+    *(unsigned int *)(p + 0x24c) = 0x0u;
+    *(unsigned int *)(p + 0x250) = 0x1000u;
+    *(unsigned int *)(p + 0x25c) = 0x0u;
+    *(unsigned int *)(p + 0x258) = 0x0u;
+    *(unsigned int *)(p + 0x260) = 0xfffff000u;
+    return p;
+}

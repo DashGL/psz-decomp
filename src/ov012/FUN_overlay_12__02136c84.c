@@ -1,0 +1,55 @@
+// flags: -O4,s
+typedef struct { unsigned short glyph, a, b, pad; int x, y; } Draw;
+typedef struct { int v[2]; } Pair;
+extern const struct {
+    int pad[21];
+    Pair a;
+    Pair b;
+} DAT_overlay_12__0213c0a8;
+extern void FUN_02071d0c(void *);
+extern void FUN_02090b44(void *);
+extern void FUN_020c32b4(void *, int);
+extern void FUN_02079160(void *, void *, int, int, int, int, int, int, int);
+extern void *FUN_02079114(void);
+extern void *FUN_02077f3c(void);
+extern int FUN_02077fec(void *);
+extern int FUN_020bbfa8(int);
+extern int FUN_overlay_12__02137564(void *);
+void FUN_overlay_12__02136c84(char *s) {
+    Draw d;
+    int xy[2];
+    Pair a, b;
+    int selected, handle;
+    void *renderer;
+    FUN_02071d0c(&d);
+    FUN_02090b44(&d);
+    d.y = 0xeb000;
+    renderer = FUN_02079114();
+    handle = FUN_02077fec(FUN_02077f3c());
+    selected = FUN_020bbfa8(512) ? 1 : 0;
+    a = DAT_overlay_12__0213c0a8.a;
+    d.glyph = 83;
+    d.x = a.v[selected];
+    FUN_020c32b4(&d, handle);
+    selected = FUN_020bbfa8(256) ? 1 : 0;
+    b = DAT_overlay_12__0213c0a8.b;
+    d.glyph = 82;
+    d.x = b.v[selected];
+    FUN_020c32b4(&d, handle);
+    d.glyph = 43;
+    d.x = 0xba000;
+    FUN_020c32b4(&d, *(int *)(s + 72));
+    xy[0] = 0xc9000;
+    xy[1] = 0xec000;
+    FUN_02079160(renderer, xy, 0, 1, *(int *)(s + 356) + 1, -1, -1, 8, 0);
+    d.glyph = 10;
+    d.x = 0xd1000;
+    d.y = 0xec000;
+    FUN_020c32b4(&d, handle);
+    xy[0] = 0xd9000;
+    FUN_02079160(renderer, xy, 0, 1, FUN_overlay_12__02137564(s), -1, -1, 8, 0);
+    d.glyph = 44;
+    d.x = 0xe2000;
+    d.y = 0xeb000;
+    FUN_020c32b4(&d, *(int *)(s + 72));
+}

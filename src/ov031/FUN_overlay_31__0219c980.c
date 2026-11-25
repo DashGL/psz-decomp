@@ -1,0 +1,8 @@
+// FUN_overlay_31__0219c980 @ 0x0219c980 (0x138, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch1.json; original draft retained for referenced provenance.
+// FUN_overlay_31__0219c980 @ 0x0219c980 (full extent 0x138, thumb)
+// check: vers=2.0/sp2p3 target=0x138 candidate=0x138 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* Complete zero-input parameter initialization. ABI evidence: notes/sessions/coverage-overlays-2026-11-05-batch624.md. */
+typedef struct Vec{int x,y,z;}Vec;extern Vec DAT_0219cf28,DAT_0219cf40,DAT_0219cf4c,DAT_0219cf34,DAT_0219cf58,DAT_0219cf68,DAT_0219cf78,DAT_0219cf88,DAT_0219cf98;extern int DAT_0219cf1c,DAT_0219cf14,DAT_0219cf18,DAT_0219cf20,DAT_0219cf24;extern void FUN_02035408(Vec *,int,int,int);extern void FUN_02042960(int *,int);extern Vec *FUN_overlay_31__0219bad4(Vec *,const Vec *);
+void FUN_overlay_31__0219c980(void){Vec a,b,c,d,e;FUN_02035408(&DAT_0219cf28,0,-3932,-73728);FUN_02035408(&DAT_0219cf40,0,-3932,-32851);FUN_02035408(&DAT_0219cf4c,0,-3932,-49235);FUN_02042960(&DAT_0219cf1c,49152);FUN_02035408(&DAT_0219cf34,0,0,-49152);FUN_02042960(&DAT_0219cf14,1229);FUN_02042960(&DAT_0219cf18,45056);FUN_02042960(&DAT_0219cf20,10240);FUN_02042960(&DAT_0219cf24,2089);FUN_02035408(&a,-12288,4096,-53248);FUN_overlay_31__0219bad4(&DAT_0219cf58,&a);FUN_02035408(&b,12288,4096,-53248);FUN_overlay_31__0219bad4(&DAT_0219cf68,&b);FUN_02035408(&c,-24576,4096,-53248);FUN_overlay_31__0219bad4(&DAT_0219cf78,&c);FUN_02035408(&d,0,4096,-53248);FUN_overlay_31__0219bad4(&DAT_0219cf88,&d);FUN_02035408(&e,24576,4096,-53248);FUN_overlay_31__0219bad4(&DAT_0219cf98,&e);}

@@ -1,0 +1,8 @@
+// FUN_020a2674 @ 0x020a2674 (0x138, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-arm9-2026-11-07-batch01.json; original draft retained for referenced provenance.
+// flags: -O4,s
+// check: 2.0/sp2p3 target=0x138 candidate=0x138 words=0 exact_bytes=0 bad_relocs=0
+/* USA ROM reconstruction, 2026-11-04. Draw party member state and flag overlays.
+ * Evidence: scratch/coverage-high-game/inspect234.txt and 020a2674.txt. */
+typedef struct{unsigned short id,a,b,pad;int x,y;} Desc;extern void *FUN_02077f3c(void);extern int FUN_02077fec(void *),FUN_02078038(void *),FUN_02032f00(void *,int);extern void FUN_020144f0(void),FUN_02014714(void),FUN_0208971c(void *,void *),FUN_020c324c(void *,int);extern char *UNK_02108c64;extern char UNK_020f4cd0[];
+void FUN_020a2674(void *unused,char *member,char *record,Desc *d,int row){int first=FUN_02077fec(FUN_02077f3c()),second=FUN_02078038(FUN_02077f3c()),state=FUN_02032f00(UNK_02108c64,*(int *)record);FUN_020144f0();if(state){FUN_0208971c(&d->x,UNK_020f4cd0);if(state==1){d->id=79;d->x+=73728* *(signed char *)(member+46)+49152;d->y+=73728*row+49152;FUN_020c324c(d,first);}else{d->id=45;d->x+=73728* *(signed char *)(member+46)+36864;d->y+=73728*row+36864;FUN_020c324c(d,second);}}if((unsigned char)record[17]&1){FUN_0208971c(&d->x,UNK_020f4cd0);d->id=40;d->x+=73728* *(signed char *)(member+46)+36864;d->y+=73728*row+36864;FUN_020c324c(d,second);}if((unsigned char)record[17]&2){FUN_0208971c(&d->x,UNK_020f4cd0);d->id=41;d->x+=73728* *(signed char *)(member+46)+36864;d->y+=73728*row+36864;FUN_020c324c(d,second);}FUN_02014714();}

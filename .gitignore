@@ -1,0 +1,28 @@
+# Clean-room public repository .gitignore
+#
+# Retail ROM, Nintendo DS BIOS, extracted game files, and proprietary compiler
+# binaries are NEVER tracked in this repository. Supply your own locally.
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*~
+*.swp
+
+# User-supplied ROM, BIOS, and extracted game assets
+assets/
+
+# User-supplied proprietary Metrowerks CodeWarrior ARM toolchain & license
+tools/mwccarm/
+
+# Prebuilt external binaries (install locally or place in tools/bin/)
+tools/bin/wibo
+tools/bin/arm-none-eabi-*
+tools/bin/dsd/dsd-*
+tools/bin/dsd/dsd
+
+# Generated build, delink, progress, and scratch outputs
+match/
+asm/
+src-asm/
+scratch/

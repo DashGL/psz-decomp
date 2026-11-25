@@ -1,0 +1,7 @@
+// FUN_overlay_4__02128db8 @ 0x02128db8 (0x10e, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch39.json; original draft retained for referenced provenance.
+// FUN_overlay_4__02128db8 @ 0x02128db8 (0x10e, Thumb)
+// check: vers=2.0/sp2p3 target=0x10e candidate=0x10e words=0 exact_bytes=0 bad_relocs=0
+// Handle two-option selection and gated independent confirm/cancel/start session transitions.
+extern int FUN_020bbf6c(unsigned int),FUN_020c2e38(void),FUN_overlay_4__021293e4(void *),FUN_overlay_4__021293f8(void *),FUN_02072c20(void *,int,int);extern void FUN_020c193c(int,int,int,int,int),FUN_overlay_4__021290a0(void *),FUN_02077e78(void *),FUN_02077e84(void *),FUN_02077e34(void *,int,int,int);extern void *FUN_02077930(void),*FUN_02072af0(void);
+void FUN_overlay_4__02128db8(int *self){if(FUN_020bbf6c(64)&&self[3]!=0){FUN_020c193c(0,2,0,0,-1);self[3]=0;}if(FUN_020bbf6c(128)&&self[3]==0){FUN_020c193c(0,2,0,0,-1);self[3]=1;}FUN_overlay_4__021290a0(self);if(!FUN_020c2e38()){if(FUN_020bbf6c(1)){FUN_020c193c(0,0,0,0,-1);FUN_02077e78(FUN_02077930());if(self[3]==0)self[4]=2;else FUN_02072c20(FUN_02072af0(),1,1);}if(FUN_overlay_4__021293e4(self)){FUN_020c193c(0,1,0,0,-1);FUN_02077e84(FUN_02077930());FUN_02072c20(FUN_02072af0(),1,1);}if(FUN_overlay_4__021293f8(self)){FUN_020c193c(0,4,0,0,-1);FUN_02077e84(FUN_02077930());FUN_02077e34(FUN_02077930(),0,0,0);FUN_02072c20(FUN_02072af0(),0,1);}}}

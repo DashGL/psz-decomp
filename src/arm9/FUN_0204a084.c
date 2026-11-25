@@ -1,0 +1,8 @@
+// FUN_0204a084 @ 0x0204a084 (inventory code 0x11a, thumb)
+// check: 2.0/sp2p3 target=0x128 candidate=0x126 words=999 exact_bytes=999 bad_relocs=0
+// near: ndiff=999/74 size=0x128 vers=2.0/sp2p3 next="literal pooling, register allocation and stack scheduling"
+// flags: -O4,s
+/* USA ROM disassembly reconstruction, 2026-11-04, low-game batch 177.
+ * Object identities are provisional. Evidence: scratch/coverage-low-game-b177/0204a084.txt.
+ */
+typedef struct{unsigned int x,y,z;} V;extern void *FUN_02046d00(void *,const void *);extern void FUN_020473e8(void *,void *,int),FUN_02035408(void *,unsigned int,unsigned int,unsigned int);extern int FUN_0204dab0(int),FUN_0204260c(void *,unsigned int,void *,void *);extern unsigned int FUN_0204daa8(int);void FUN_0204a084(char *s,unsigned int *input){unsigned int descriptor[25],matrix[12],other[9];V position,zero;char *actor,*model;int mode=-1;switch(input[21]){case 59:*(int *)(s+260)=4;mode=7;break;case 60:*(int *)(s+260)=0;mode=3;break;case 61:*(int *)(s+260)=2;mode=5;break;case 62:*(int *)(s+260)=3;mode=6;break;case 63:*(int *)(s+260)=1;mode=4;break;case 64:*(int *)(s+260)=5;mode=8;break;case 65:break;}FUN_02046d00(descriptor,input);descriptor[17]=1;descriptor[19]=-1;descriptor[18]=mode;FUN_020473e8(s,descriptor,0);if(FUN_0204dab0(*(int *)(s+232))){actor=(char *)FUN_0204daa8(*(int *)(s+232));if(actor){model=*(char **)(actor+140);if(model){FUN_0204260c(model,2,matrix,other);FUN_02035408(&position,matrix[9],matrix[10],matrix[11]);*(V *)(s+92)=position;}}}if(*(int *)(s+260)==1){*(int *)(s+264)=16;zero.x=0;zero.y=0;zero.z=0;*(V *)(s+80)=zero;*(V *)(s+272)=*(V *)(input+11);*(int *)(s+168)=24;*(int *)(s+172)=2;*(int *)(s+180)=25;}}

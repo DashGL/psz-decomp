@@ -1,0 +1,8 @@
+// FUN_overlay_20__0219ec24 @ 0x0219ec24 (0xf0, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch2.json; original draft retained for referenced provenance.
+// FUN_overlay_20__0219ec24 @ 0x0219ec24 (full extent 0xf0, thumb)
+// check: vers=2.0/sp2p3 target=0xf0 candidate=0xf0 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* Complete receiver-only state/effect update. ABI evidence: notes/sessions/coverage-overlays-2026-11-05-batch634.md. */
+typedef struct Vec{int x,y,z;}Vec;extern unsigned DAT_0219ff88;extern int DAT_0219fef4[];extern Vec DAT_0219ff08;extern int FUN_02040d2c(void *,int);extern void FUN_02040c0c(void *,int,int,int,int);extern void FUN_02037924(void *);extern int FUN_02040ce8(void *,int,int);extern int FUN_02074e9c(void *,int,int,int);extern char *FUN_02075040(void *,int);extern void FUN_02040d0c(void *,int,int);
+void FUN_overlay_20__0219ec24(char *self){char *owner=*(char **)(self+4);void *state=*(void **)(self+8);int flag6,flag5;switch(*(int *)(self+12)){case 0:if(FUN_02040d2c(owner,0)){*(unsigned short *)(owner+0x44)+=32768;FUN_02040c0c(owner,0,4,4096,0);*(int *)(self+12)=1;}break;case 1:(*(unsigned *)(self+16))++;if(*(int *)(self+16)>1)FUN_02037924(state);break;}flag6=FUN_02040ce8(owner,0,6);flag5=FUN_02040ce8(owner,0,5);if(flag6||flag5){char *effect=FUN_02075040(owner,FUN_02074e9c(owner,10,0,0));if(effect){*(Vec *)(effect+0x5c)=*(Vec *)(owner+0x38);if(flag6){if(!(DAT_0219ff88&1)){DAT_0219fef4[5]=-4096;DAT_0219fef4[6]=4096;DAT_0219fef4[7]=4096;DAT_0219ff88|=1;}*(Vec *)(effect+0x50)=DAT_0219ff08;}}FUN_02040d0c(owner,0,6);FUN_02040d0c(owner,0,5);}}

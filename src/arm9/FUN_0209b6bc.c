@@ -1,0 +1,9 @@
+enum{E0=0,E1=1};
+// flags: -O4,s
+// check: 2.0/sp2p3 target=0x174 candidate=0x170 words=999 exact_bytes=999 bad_relocs=4
+// near: ndiff=999/93 size=0x174 vers=2.0/sp2p3 next="inspect register coloring, boolean materialization and instruction scheduling; semantics reconstructed"
+/* USA ROM reconstruction, 2026-11-04. Handle object activation, positioning and packet events.
+ * Evidence: scratch/coverage-high-game/inspect273.txt, inspect273forward.txt and 0209b6bc.txt. */
+typedef struct{int x,y,z;}Vec;typedef struct{unsigned char b[4];}Key;typedef struct{int w[7];}Packet;extern char UNK_020fb444[];extern int FUN_02033704(void),FUN_02030700(void *);extern void FUN_02030da8(Key *,void *),FUN_0209b680(Packet *,Key *,int),FUN_020bce3c(void *),FUN_020304d8(void *),FUN_020304b8(void *,void *),FUN_02030658(void *,Vec *),FUN_020304c8(void *,Vec *,unsigned short),FUN_02033658(int,int,Vec *),FUN_02030808(void *,int,int),FUN_0209bb5c(void *);
+#define W(n) (*(int *)(s+(n)))
+void FUN_0209b6bc(char *s,int event){Key key;Packet packet;Vec pos,sound1,sound2;if(event==1){if(FUN_02033704()||((**(unsigned char **)(s+76)&1)?E1:E0)||(W(320)&2))return;FUN_02030da8(&key,s);FUN_0209b680(&packet,&key,0);FUN_020bce3c(&packet);W(320)|=2;}else if(event==0){if(*(signed char *)(*(char **)(s+72)+24)==1)FUN_020304d8(s);else FUN_020304b8(s,UNK_020fb444);pos=*(Vec *)(s+28);if(!FUN_02033704()){pos.y=W(348)+4096;FUN_02030658(s,&pos);*(Vec *)(s+332)=pos;FUN_020304c8(s,&pos,*(unsigned short *)(s+44));W(344)=pos.y;if(*(signed char *)(*(char **)(s+72)+24)==1){sound1=*(Vec *)(s+28);FUN_02033658(4,6,&sound1);}else{sound2=*(Vec *)(s+28);FUN_02033658(4,7,&sound2);}}else{pos.y=W(348)+10240;FUN_02030658(s,&pos);*(Vec *)(s+332)=pos;FUN_020304c8(s,&pos,*(unsigned short *)(s+44));W(344)=pos.y;}}else if(event==2){W(328)=0;if(!FUN_02030700(s+312))FUN_02030808(s+312,1,0);}else if(event==3){if(!FUN_02033704())FUN_0209bb5c(s);}}

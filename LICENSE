@@ -1,0 +1,45 @@
+MIT License
+
+Copyright (c) 2026 pszmini-decomp contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Third-party components vendored or ported into this repository remain under
+their own MIT licenses; this file supplements (and does not replace) their
+notices:
+
+- tools/match.py and other tooling ported from
+  tangOS-decomps/pictochat-decomp (MIT), Copyright the pictochat-decomp
+  contributors: https://github.com/tangOS-decomps/pictochat-decomp
+- tools/templates.py ported from sm64ds-decomp tools/swarm.py (MIT),
+  Copyright the sm64ds-decomp contributors:
+  https://github.com/tangosdev/sm64ds-decomp
+- docs/dsd/ and tools/bin/dsd/README.md content derived from AetiasHax's
+  ds-decomp (MIT): https://github.com/AetiasHax/ds-decomp
+- notes/reference/ contains read-only snapshot copies of notes from the
+  above projects, preserved with provenance metadata (see
+  notes/reference/README.md); they remain under their original licenses.
+
+This license covers the repository's original work: the hand-written
+matching C in src/, notes, and the original portions of tools/. It grants
+nothing over the Phantasy Star Zero Mini ROM, its extracted data, BIOS dumps,
+or the proprietary mwccarm toolchain (tracked only in this private
+repository, by decision of 2026-08-30; see Legal in README.md).

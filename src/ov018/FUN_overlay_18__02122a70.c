@@ -1,0 +1,7 @@
+// Verified 2026-11-12: pinned 2.0/sp2p3, full extent 0xf8, exact bytes and relocation targets.
+// FUN_overlay_18__02122a70 @ 0x02122a70
+// check: 2.0/sp2p3 target=0xf8 candidate=0xf8 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* Complete two-input selection rendering. ABI evidence: notes/sessions/coverage-overlays-2026-11-05-batch644.md. */
+struct T5{int pad[5];int t[4];};typedef struct Draw{unsigned short index,a,b;int x,y;}Draw;extern int DAT_0212395c[],DAT_02123968[];extern void FUN_020144f0(void),FUN_02014714(void);extern void FUN_02071d0c(Draw *),FUN_02090b44(Draw *),FUN_020c32b4(Draw *,unsigned);
+void FUN_overlay_18__02122a70(int *self,const signed char *descriptor){Draw base,item,plain;int count,i,kind;FUN_020144f0();if(self[9]){FUN_02071d0c(&base);FUN_02090b44(&base);base.index=0;base.x=81920;base.y=806912;FUN_020c32b4(&base,((struct T5 *)self)->t[self[9]]);}count=self[2];if(self[9]){for(i=0;i<count;i++){FUN_02071d0c(&item);FUN_02090b44(&item);item.x=270336;kind=descriptor[32];item.y=(unsigned)(DAT_02123968[kind]+(unsigned)DAT_0212395c[kind]*i+192)<<12;if(i==self[1])item.index=i+1+count;else item.index=i+1;FUN_020c32b4(&item,((struct T5 *)self)->t[self[9]]);}}else{for(i=0;i<count;i++){FUN_02071d0c(&plain);FUN_02090b44(&plain);plain.y=((unsigned)i*38+221)<<12;if(i==self[1]){plain.x=86016;plain.index=i+count;}else{plain.x=159744;plain.index=i;}FUN_020c32b4(&plain,((struct T5 *)self)->t[self[9]]);}}FUN_02014714();}

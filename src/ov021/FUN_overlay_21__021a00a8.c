@@ -1,0 +1,9 @@
+// FUN_overlay_21__021a00a8 @ 0x021a00a8 (0x1a4, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch1.json; original draft retained for referenced provenance.
+// FUN_overlay_21__021a00a8 @ 0x021a00a8 (full extent 0x1a4, thumb)
+// check: vers=2.0/sp2p3 target=0x1a4 candidate=0x1a4 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* Complete static parameter table initializer for ov021. ABI and caller evidence:
+ * notes/sessions/coverage-overlays-2026-11-05-batch670.md. */
+extern void FUN_02042960(void *,int);extern void FUN_02035408(void *,int,int,int);
+void FUN_overlay_21__021a00a8(void){FUN_02042960((void *)0x021a11c8,0x7000);FUN_02042960((void *)0x021a11f0,0x1e000);FUN_02042960((void *)0x021a11cc,0x7000);FUN_02042960((void *)0x021a11d0,0x11000);FUN_02042960((void *)0x021a11c4,0x800);FUN_02042960((void *)0x021a1220,0x19000);FUN_02042960((void *)0x021a121c,0x1800);FUN_02042960((void *)0x021a1218,0x2000);FUN_02042960((void *)0x021a1214,0x1800);FUN_02042960((void *)0x021a1210,0x1000);FUN_02042960((void *)0x021a120c,0x1333);FUN_02042960((void *)0x021a1208,0x1e000);FUN_02042960((void *)0x021a1204,0x5000);FUN_02042960((void *)0x021a1200,0x2000);FUN_02042960((void *)0x021a11fc,0x3000);FUN_02042960((void *)0x021a11f8,0xcd);FUN_02042960((void *)0x021a11f4,0xccd);FUN_02035408((void *)0x021a1224,0,0xcd,0);FUN_02042960((void *)0x021a11ec,0x2000);FUN_02042960((void *)0x021a11e8,-0x5000);FUN_02042960((void *)0x021a11e0,0x2000);FUN_02035408((void *)0x021a1230,0x1429,0x1429,0x1429);FUN_02035408((void *)0x021a123c,0x555,0x555,0x1000);FUN_02042960((void *)0x021a11d4,0x9000);FUN_02042960((void *)0x021a11c0,0x1000);FUN_02042960((void *)0x021a11e4,0x1ccd);FUN_02042960((void *)0x021a11dc,0x2000);FUN_02042960((void *)0x021a11d8,0x2000);}

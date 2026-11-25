@@ -1,0 +1,10 @@
+// FUN_overlay_24__021981bc @ 0x021981bc (0xc0, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch3.json; original draft retained for referenced provenance.
+// FUN_overlay_24__021981bc @ 0x021981bc (code 0xba, full extent 0xc0, thumb)
+// check: vers=2.0/sp2p3 target=0xc0 candidate=0xc0 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA ROM reconstruction, 2026-11-05. Complete ordered nine-child release destructor.
+ * ABI evidence: notes/sessions/coverage-overlays-2026-11-05-batch581.md.
+ */
+typedef void (*Release)(void *);extern void *FUN_02037848(void *);extern void FUN_020ba8ac(void *);
+void * FUN_overlay_24__021981bc(void **self) { void *child;self[0]=(void *)0x0219c248;child=self[20];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[20]=0;}child=self[19];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[19]=0;}child=self[18];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[18]=0;}child=self[17];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[17]=0;}child=self[16];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[16]=0;}child=self[15];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[15]=0;}child=self[14];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[14]=0;}child=self[13];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[13]=0;}child=self[12];if(child){if(child)((Release)(*(unsigned **)child)[4])(child);self[12]=0;}FUN_02037848(self);FUN_020ba8ac(self);return self; }

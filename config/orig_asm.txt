@@ -1,0 +1,166 @@
+# Non-C / ROM-extracted assembly manifest (metadata only — ZERO ROM instructions or bytes).
+#
+# Modeled on zeroz41/pso-decomp: no disassembled ROM instructions (.s files) are
+# tracked in git. During whole-ROM builds, dsd delink carves these ranges locally
+# from the user-supplied ROM into gitignored match/; tools/orig_asm.py can also
+# extract local disassembly stubs into match/orig_asm/ on demand.
+#
+# Categories:
+#   nitrosdk_sys  - hand-written Nintendo NitroSDK MI/OS/CP15/SWI assembly
+#   crt_runtime   - hand-written Metrowerks MSL/CRT ARM runtime assembly
+#   nitrosdk_math - hand-written NitroSDK FX/GX/MTX/CP assembly
+#   ds_protect    - DS Protect v1.20 anti-piracy ARM assembly (decrypted at extract)
+#   arm_misc      - hand-written ARM utility/clz/crypto/endian assembly
+#   codec_ov016   - hand-written ov016 Mobiclip codec/DSP ARM assembly
+#   c_near_shim   - originally C; near-matching C drafts live in drafts/near/
+#
+name=FUN_02000800 module=arm9 addr=0x02000800 size=0x154 mode=arm category=crt_runtime
+name=FUN_02000954 module=arm9 addr=0x02000954 size=0x1c mode=arm category=crt_runtime
+name=FUN_02000970 module=arm9 addr=0x02000970 size=0xac mode=arm category=crt_runtime
+name=FUN_02000a1c module=arm9 addr=0x02000a1c size=0x94 mode=arm category=crt_runtime
+name=FUN_02000ab0 module=arm9 addr=0x02000ab0 size=0xe8 mode=arm category=crt_runtime
+name=FUN_02002ed8 module=arm9 addr=0x02002ed8 size=0x824 mode=arm category=c_near_shim
+name=FUN_02008400 module=arm9 addr=0x02008400 size=0x318 mode=arm category=crt_runtime
+name=FUN_02008718 module=arm9 addr=0x02008718 size=0x104 mode=arm category=crt_runtime
+name=FUN_0200881c module=arm9 addr=0x0200881c size=0x4c mode=arm category=crt_runtime
+name=FUN_02008868 module=arm9 addr=0x02008868 size=0x8c mode=arm category=crt_runtime
+name=FUN_020088f4 module=arm9 addr=0x020088f4 size=0x40 mode=arm category=crt_runtime
+name=FUN_02008934 module=arm9 addr=0x02008934 size=0x3c mode=arm category=crt_runtime
+name=FUN_02008970 module=arm9 addr=0x02008970 size=0x364 mode=arm category=crt_runtime
+name=FUN_02008cd4 module=arm9 addr=0x02008cd4 size=0x1b4 mode=arm category=crt_runtime
+name=FUN_02008e88 module=arm9 addr=0x02008e88 size=0x3b4 mode=arm category=crt_runtime
+name=FUN_0200923c module=arm9 addr=0x0200923c size=0x224 mode=arm category=crt_runtime
+name=FUN_02009460 module=arm9 addr=0x02009460 size=0x98 mode=arm category=crt_runtime
+name=FUN_020094f8 module=arm9 addr=0x020094f8 size=0xa4 mode=arm category=crt_runtime
+name=FUN_0200959c module=arm9 addr=0x0200959c size=0x9c mode=arm category=crt_runtime
+name=FUN_02009638 module=arm9 addr=0x02009638 size=0x8c mode=arm category=crt_runtime
+name=FUN_020096c4 module=arm9 addr=0x020096c4 size=0x8c mode=arm category=crt_runtime
+name=FUN_02009750 module=arm9 addr=0x02009750 size=0x5c mode=arm category=crt_runtime
+name=FUN_020097ac module=arm9 addr=0x020097ac size=0x68 mode=arm category=crt_runtime
+name=FUN_02009814 module=arm9 addr=0x02009814 size=0x3b8 mode=arm category=crt_runtime
+name=FUN_02009bcc module=arm9 addr=0x02009bcc size=0x84 mode=arm category=crt_runtime
+name=FUN_02009c50 module=arm9 addr=0x02009c50 size=0x34 mode=arm category=crt_runtime
+name=FUN_02009c84 module=arm9 addr=0x02009c84 size=0x48 mode=arm category=crt_runtime
+name=FUN_02009ccc module=arm9 addr=0x02009ccc size=0x48 mode=arm category=crt_runtime
+name=FUN_02009d14 module=arm9 addr=0x02009d14 size=0x1ec mode=arm category=crt_runtime
+name=FUN_02009f00 module=arm9 addr=0x02009f00 size=0x288 mode=arm category=crt_runtime
+name=FUN_0200a188 module=arm9 addr=0x0200a188 size=0x1b0 mode=arm category=crt_runtime
+name=FUN_0200a338 module=arm9 addr=0x0200a338 size=0xc mode=arm category=crt_runtime
+name=FUN_0200a344 module=arm9 addr=0x0200a344 size=0x3c mode=arm category=crt_runtime
+name=FUN_0200a380 module=arm9 addr=0x0200a380 size=0x20 mode=arm category=crt_runtime
+name=FUN_0200a3a0 module=arm9 addr=0x0200a3a0 size=0x20c mode=arm category=crt_runtime
+name=FUN_0200a5ac module=arm9 addr=0x0200a5ac size=0x8 mode=arm category=crt_runtime
+name=FUN_0200a5b4 module=arm9 addr=0x0200a5b4 size=0x1f4 mode=arm category=crt_runtime
+name=FUN_0200a7a8 module=arm9 addr=0x0200a7a8 size=0x544 mode=arm category=crt_runtime
+name=FUN_0200acf0 module=arm9 addr=0x0200acf0 size=0x14 mode=arm category=crt_runtime
+name=FUN_0200ad04 module=arm9 addr=0x0200ad04 size=0x14 mode=arm category=crt_runtime
+name=FUN_0200ad18 module=arm9 addr=0x0200ad18 size=0x10 mode=arm category=crt_runtime
+name=FUN_0200c8b0 module=arm9 addr=0x0200c8b0 size=0x7c mode=arm category=crt_runtime
+name=FUN_02015dfc module=arm9 addr=0x02015dfc size=0x2c0 mode=arm category=c_near_shim
+name=FUN_02016f34 module=arm9 addr=0x02016f34 size=0xf8 mode=arm category=arm_misc
+name=FUN_020179d4 module=arm9 addr=0x020179d4 size=0x1f4 mode=arm category=c_near_shim
+name=FUN_02017d40 module=arm9 addr=0x02017d40 size=0x88 mode=arm category=arm_misc
+name=FUN_02017f30 module=arm9 addr=0x02017f30 size=0x2f8 mode=arm category=arm_misc
+name=FUN_02022170 module=arm9 addr=0x02022170 size=0xb0 mode=arm category=c_near_shim
+name=FUN_0202ce90 module=arm9 addr=0x0202ce90 size=0x10 mode=arm category=arm_misc
+name=FUN_0202cea0 module=arm9 addr=0x0202cea0 size=0x14 mode=arm category=arm_misc
+name=FUN_0202ceb4 module=arm9 addr=0x0202ceb4 size=0x1c mode=arm category=arm_misc
+name=FUN_0202e950 module=arm9 addr=0x0202e950 size=0x2c mode=arm category=arm_misc
+name=FUN_0202e97c module=arm9 addr=0x0202e97c size=0x8 mode=arm category=arm_misc
+name=FUN_02052878 module=arm9 addr=0x02052878 size=0x2a4 mode=thumb category=c_near_shim
+name=FUN_02056f40 module=arm9 addr=0x02056f40 size=0x40 mode=arm category=nitrosdk_math
+name=FUN_02056f80 module=arm9 addr=0x02056f80 size=0x3c mode=arm category=nitrosdk_math
+name=FUN_02058330 module=arm9 addr=0x02058330 size=0x280 mode=arm category=nitrosdk_math
+name=FUN_0205aa80 module=arm9 addr=0x0205aa80 size=0x24 mode=arm category=nitrosdk_math
+name=FUN_0205aaa4 module=arm9 addr=0x0205aaa4 size=0x2c mode=arm category=nitrosdk_math
+name=FUN_0205abac module=arm9 addr=0x0205abac size=0x1c mode=thumb category=nitrosdk_math
+name=FUN_0205abc8 module=arm9 addr=0x0205abc8 size=0x18 mode=thumb category=nitrosdk_math
+name=FUN_0205b16c module=arm9 addr=0x0205b16c size=0x28 mode=arm category=nitrosdk_math
+name=FUN_0205b194 module=arm9 addr=0x0205b194 size=0x34 mode=arm category=nitrosdk_math
+name=FUN_0205b2a8 module=arm9 addr=0x0205b2a8 size=0x20 mode=thumb category=nitrosdk_math
+name=FUN_0205b2c8 module=arm9 addr=0x0205b2c8 size=0x1c mode=thumb category=nitrosdk_math
+name=FUN_0205b2e4 module=arm9 addr=0x0205b2e4 size=0x1c mode=thumb category=nitrosdk_math
+name=FUN_0205bb08 module=arm9 addr=0x0205bb08 size=0x2c mode=arm category=nitrosdk_math
+name=FUN_0205bb34 module=arm9 addr=0x0205bb34 size=0x34 mode=arm category=nitrosdk_math
+name=FUN_0205ea38 module=arm9 addr=0x0205ea38 size=0x94 mode=arm category=nitrosdk_math
+name=FUN_02063b10 module=arm9 addr=0x02063b10 size=0x1e4 mode=arm category=c_near_shim
+name=FUN_020654b4 module=arm9 addr=0x020654b4 size=0x28 mode=arm category=nitrosdk_sys
+name=FUN_020654dc module=arm9 addr=0x020654dc size=0x34 mode=arm category=nitrosdk_sys
+name=FUN_02065510 module=arm9 addr=0x02065510 size=0x1c mode=arm category=nitrosdk_sys
+name=FUN_0206552c module=arm9 addr=0x0206552c size=0x28 mode=arm category=nitrosdk_sys
+name=FUN_02065554 module=arm9 addr=0x02065554 size=0x28 mode=arm category=nitrosdk_sys
+name=FUN_0206557c module=arm9 addr=0x0206557c size=0x5c mode=arm category=nitrosdk_sys
+name=FUN_020655d8 module=arm9 addr=0x020655d8 size=0x74 mode=arm category=nitrosdk_sys
+name=FUN_0206564c module=arm9 addr=0x0206564c size=0x1c mode=arm category=nitrosdk_sys
+name=FUN_02065668 module=arm9 addr=0x02065668 size=0x24 mode=arm category=nitrosdk_sys
+name=FUN_0206568c module=arm9 addr=0x0206568c size=0x2c mode=arm category=nitrosdk_sys
+name=FUN_020656b8 module=arm9 addr=0x020656b8 size=0xbc mode=arm category=nitrosdk_sys
+name=FUN_02065774 module=arm9 addr=0x02065774 size=0x180 mode=arm category=nitrosdk_sys
+name=FUN_020658f4 module=arm9 addr=0x020658f4 size=0x10 mode=thumb category=nitrosdk_sys
+name=FUN_02065904 module=arm9 addr=0x02065904 size=0x8 mode=arm category=nitrosdk_sys
+name=FUN_0206590c module=arm9 addr=0x0206590c size=0x100 mode=arm category=nitrosdk_sys
+name=FUN_020660f8 module=arm9 addr=0x020660f8 size=0xc mode=arm category=nitrosdk_sys
+name=FUN_020661c4 module=arm9 addr=0x020661c4 size=0xb0 mode=arm category=nitrosdk_sys
+name=FUN_02066dd8 module=arm9 addr=0x02066dd8 size=0x84 mode=arm category=nitrosdk_sys
+name=FUN_02066e5c module=arm9 addr=0x02066e5c size=0x4c mode=arm category=nitrosdk_sys
+name=FUN_02066ea8 module=arm9 addr=0x02066ea8 size=0x44 mode=arm category=nitrosdk_sys
+name=FUN_02067374 module=arm9 addr=0x02067374 size=0x2c mode=arm category=nitrosdk_sys
+name=FUN_020673a0 module=arm9 addr=0x020673a0 size=0x34 mode=arm category=nitrosdk_sys
+name=FUN_020673d4 module=arm9 addr=0x020673d4 size=0x1c mode=arm category=nitrosdk_sys
+name=FUN_020673f0 module=arm9 addr=0x020673f0 size=0x1c mode=arm category=nitrosdk_sys
+name=FUN_0206740c module=arm9 addr=0x0206740c size=0x24 mode=arm category=nitrosdk_sys
+name=FUN_02067430 module=arm9 addr=0x02067430 size=0xc mode=arm category=nitrosdk_sys
+name=FUN_0206743c module=arm9 addr=0x0206743c size=0xc mode=arm category=nitrosdk_sys
+name=FUN_02067448 module=arm9 addr=0x02067448 size=0x1c mode=arm category=nitrosdk_sys
+name=FUN_02067464 module=arm9 addr=0x02067464 size=0x20 mode=arm category=nitrosdk_sys
+name=FUN_02067a74 module=arm9 addr=0x02067a74 size=0x14 mode=arm category=nitrosdk_sys
+name=FUN_02067a88 module=arm9 addr=0x02067a88 size=0x10 mode=arm category=nitrosdk_sys
+name=FUN_02067a98 module=arm9 addr=0x02067a98 size=0x10 mode=arm category=nitrosdk_sys
+name=FUN_02067aa8 module=arm9 addr=0x02067aa8 size=0x14 mode=arm category=nitrosdk_sys
+name=FUN_02067abc module=arm9 addr=0x02067abc size=0x8 mode=arm category=nitrosdk_sys
+name=FUN_02067ac4 module=arm9 addr=0x02067ac4 size=0x8 mode=arm category=nitrosdk_sys
+name=FUN_02067bc0 module=arm9 addr=0x02067bc0 size=0x14 mode=arm category=nitrosdk_sys
+name=FUN_02067bd4 module=arm9 addr=0x02067bd4 size=0x90 mode=arm category=nitrosdk_sys
+name=FUN_02067c64 module=arm9 addr=0x02067c64 size=0x7c mode=arm category=nitrosdk_sys
+name=FUN_020683c0 module=arm9 addr=0x020683c0 size=0x14 mode=arm category=nitrosdk_sys
+name=FUN_020683d4 module=arm9 addr=0x020683d4 size=0x14 mode=arm category=nitrosdk_sys
+name=FUN_020683e8 module=arm9 addr=0x020683e8 size=0x18 mode=arm category=nitrosdk_sys
+name=FUN_02068400 module=arm9 addr=0x02068400 size=0x14 mode=arm category=nitrosdk_sys
+name=FUN_02068414 module=arm9 addr=0x02068414 size=0x18 mode=arm category=nitrosdk_sys
+name=FUN_0206842c module=arm9 addr=0x0206842c size=0xc mode=arm category=nitrosdk_sys
+name=FUN_02068438 module=arm9 addr=0x02068438 size=0xc mode=arm category=nitrosdk_sys
+name=FUN_02068444 module=arm9 addr=0x02068444 size=0xc mode=arm category=nitrosdk_sys
+name=FUN_02068594 module=arm9 addr=0x02068594 size=0x8 mode=arm category=nitrosdk_sys
+name=FUN_02068738 module=arm9 addr=0x02068738 size=0xc mode=arm category=nitrosdk_sys
+name=FUN_020692a4 module=arm9 addr=0x020692a4 size=0x18 mode=arm category=nitrosdk_sys
+name=FUN_02092f6c module=arm9 addr=0x02092f6c size=0x6c8 mode=thumb category=c_near_shim
+name=FUN_020a3b68 module=arm9 addr=0x020a3b68 size=0x2a8 mode=thumb category=c_near_shim
+name=FUN_020b9ad4 module=arm9 addr=0x020b9ad4 size=0x1dc mode=arm category=arm_misc
+name=FUN_020bb158 module=arm9 addr=0x020bb158 size=0xe8 mode=thumb category=c_near_shim
+name=FUN_020bcbc0 module=arm9 addr=0x020bcbc0 size=0x194 mode=thumb category=c_near_shim
+name=FUN_020c5464 module=arm9 addr=0x020c5464 size=0x118 mode=arm category=ds_protect
+name=FUN_020c557c module=arm9 addr=0x020c557c size=0x118 mode=arm category=ds_protect
+name=FUN_020c5694 module=arm9 addr=0x020c5694 size=0x1d4 mode=arm category=ds_protect
+name=FUN_020c5868 module=arm9 addr=0x020c5868 size=0xa4 mode=arm category=ds_protect
+name=FUN_020c590c module=arm9 addr=0x020c590c size=0x108 mode=arm category=ds_protect
+name=FUN_020c5a14 module=arm9 addr=0x020c5a14 size=0x108 mode=arm category=ds_protect
+name=FUN_020c5b1c module=arm9 addr=0x020c5b1c size=0xe8 mode=arm category=ds_protect
+name=FUN_020c5c04 module=arm9 addr=0x020c5c04 size=0xe8 mode=arm category=ds_protect
+name=FUN_020c5cec module=arm9 addr=0x020c5cec size=0xe8 mode=arm category=ds_protect
+name=FUN_020c5dd4 module=arm9 addr=0x020c5dd4 size=0xe8 mode=arm category=ds_protect
+name=FUN_020c5ebc module=arm9 addr=0x020c5ebc size=0xc0 mode=arm category=ds_protect
+name=FUN_020c5f7c module=arm9 addr=0x020c5f7c size=0xc0 mode=arm category=ds_protect
+name=FUN_020c603c module=arm9 addr=0x020c603c size=0xd8 mode=arm category=ds_protect
+name=FUN_020c6114 module=arm9 addr=0x020c6114 size=0xd8 mode=arm category=ds_protect
+name=FUN_020c995c module=arm9 addr=0x020c995c size=0x9d4 mode=thumb category=c_near_shim
+name=FUN_020cfdbc module=arm9 addr=0x020cfdbc size=0x17c0 mode=thumb category=c_near_shim
+name=FUN_020dadd0 module=arm9 addr=0x020dadd0 size=0x88 mode=thumb category=c_near_shim
+name=FUN_overlay_12__02127f4c module=ov012 addr=0x02127f4c size=0x154 mode=thumb category=c_near_shim
+name=FUN_overlay_16__0211f71c module=ov016 addr=0x0211f71c size=0x5c0 mode=arm category=codec_ov016
+name=FUN_overlay_16__02120d1c module=ov016 addr=0x02120d1c size=0x10 mode=arm category=codec_ov016
+name=FUN_overlay_16__021216dc module=ov016 addr=0x021216dc size=0x284 mode=arm category=codec_ov016
+name=FUN_overlay_16__0212d224 module=ov016 addr=0x0212d224 size=0x130 mode=arm category=codec_ov016
+name=FUN_overlay_16__0212d354 module=ov016 addr=0x0212d354 size=0x138 mode=arm category=codec_ov016
+name=FUN_overlay_16__0212d580 module=ov016 addr=0x0212d580 size=0x108 mode=arm category=codec_ov016
+name=FUN_overlay_22__02199238 module=ov022 addr=0x02199238 size=0x134 mode=thumb category=c_near_shim
+name=FUN_overlay_31__0219c0e0 module=ov031 addr=0x0219c0e0 size=0x17c mode=thumb category=c_near_shim

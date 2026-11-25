@@ -1,0 +1,12 @@
+// FUN_02041794 @ 0x02041794 (0x134, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-arm9-2026-11-07-batch12-manifest.json; original draft retained for referenced provenance.
+// FUN_02041794 @ 0x02041794 (inventory code 0x10a, thumb)
+// check: 2.0/sp2p3 target=0x134 candidate=0x134 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA ROM disassembly reconstruction, 2026-11-04, low-game batch 135.
+ * Object identities are provisional. Evidence: scratch/coverage-low-game-b135/02041794.txt.
+ */
+extern void *DAT_020f8d04[];
+extern void *DAT_02108c84;
+extern const char DAT_020f8d4c[], DAT_020f8d60[], DAT_020f8d74[], DAT_020f8d7c[], DAT_020f8d84[], DAT_020f8d8c[], DAT_020f8d94[], DAT_020f8d9c[];
+extern void *FUN_020ba894(unsigned int),*FUN_020bc2dc(void *,void *,int);extern int FUN_020038ec(void *,unsigned int,const char *,...);extern void FUN_020bc3c0(void *,void *,int),FUN_02041afc(void *,void *,void *),FUN_02033f30(void *,unsigned int,unsigned int);extern unsigned int FUN_020bc51c(void *,const void *),FUN_02037adc(void *,unsigned int,int),FUN_02037c88(void *,unsigned int,int,int);void FUN_02041794(char *s,char *arg){char path[64];void *p,*m;unsigned int resource;if(!arg||!*(void **)(arg+12))return;p=FUN_020ba894(132);if(p)p=FUN_020bc2dc(p,DAT_020f8d04[0],0);*(void **)(s+32)=p;if(!p)return;FUN_020038ec(path,64,DAT_020f8d4c,*(void **)(*(char **)(s+4)+12));FUN_020bc3c0(*(void **)(s+32),path,0);FUN_020038ec(path,64,DAT_020f8d60,*(void **)(*(char **)(s+4)+12));FUN_02041afc(path,s+36,s+42);*(unsigned short *)(s+56)=*(unsigned short *)(s+42);m=DAT_02108c84;if(!m)return;resource=FUN_020bc51c(*(void **)(s+32),DAT_020f8d74);*(unsigned short *)(s+40)=FUN_02037adc(m,resource,0);FUN_02033f30(m,*(unsigned short *)(s+40),*(unsigned short *)(s+42));resource=FUN_020bc51c(*(void **)(s+32),DAT_020f8d7c);if(resource)*(unsigned short *)(s+44)=FUN_02037c88(m,resource,0,0);resource=FUN_020bc51c(*(void **)(s+32),DAT_020f8d84);if(resource)*(unsigned short *)(s+48)=FUN_02037c88(m,resource,2,0);resource=FUN_020bc51c(*(void **)(s+32),DAT_020f8d8c);*(unsigned short *)(s+54)=FUN_02037adc(m,resource,0);FUN_02033f30(m,*(unsigned short *)(s+54),*(unsigned short *)(s+56));resource=FUN_020bc51c(*(void **)(s+32),DAT_020f8d94);if(resource)*(unsigned short *)(s+58)=FUN_02037c88(m,resource,0,0);resource=FUN_020bc51c(*(void **)(s+32),DAT_020f8d9c);if(resource)*(unsigned short *)(s+62)=FUN_02037c88(m,resource,2,0);}

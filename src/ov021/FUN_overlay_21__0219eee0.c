@@ -1,0 +1,8 @@
+// FUN_overlay_21__0219eee0 @ 0x0219eee0 (0xc4, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-high-overlays-2026-11-07-batch3.json; original draft retained for referenced provenance.
+// FUN_overlay_21__0219eee0 @ 0x0219eee0 (full extent 0xc4, thumb)
+// check: vers=2.0/sp2p3 target=0xc4 candidate=0xc4 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* Complete readiness/state update. ABI evidence: notes/sessions/coverage-overlays-2026-11-05-batch595.md. */
+extern char DAT_0211a51c[];extern int FUN_02084be8(void *);extern int FUN_02084d00(void *);extern unsigned FUN_0208546c(void);extern int FUN_overlay_21__02199158(void *);extern int FUN_overlay_21__0219a798(void *);extern void FUN_02037924(void *);extern void FUN_overlay_21__02199f00(void *,unsigned);extern void FUN_overlay_21__02199ef4(void *,const void *);extern void FUN_02001540(void *,int,unsigned);
+void FUN_overlay_21__0219eee0(char *self){char *owner=*(char **)(self+4),*state=*(char **)(self+8);if(FUN_02084be8(DAT_0211a51c)){if(FUN_overlay_21__02199158(owner)||*(unsigned *)(self+12)>600)FUN_02037924(state);}else{if(FUN_overlay_21__02199158(owner)&&*(int *)(self+16)==0){unsigned id=FUN_0208546c();FUN_overlay_21__02199f00(state,id);*(int *)(self+16)=1;}if(FUN_02084d00(DAT_0211a51c)&&FUN_overlay_21__0219a798(state)){unsigned packet[2];FUN_02001540(packet,0,8);packet[1]=~0U;FUN_02001540(packet,0,8);packet[1]=~0U;*(unsigned char *)packet=2;FUN_overlay_21__02199ef4(state,packet);}if((*(signed char *)(state+0x10c)==2||*(unsigned *)(self+12)>600)&&FUN_overlay_21__02199158(owner))FUN_02037924(state);}*(unsigned *)(self+12)+=1;}

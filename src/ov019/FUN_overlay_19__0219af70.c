@@ -1,0 +1,8 @@
+// FUN_overlay_19__0219af70 - full bytes and relocation targets verified by tools/match.py (2.0/sp2p3).
+// FUN_overlay_19__0219af70 @ 0x0219af70 (full extent 0x108, thumb)
+// check: vers=2.0/sp2p3 target=0x108 candidate=0x108 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* Complete receiver-only lifecycle. Concrete child table/destructor ABI chain:
+ * notes/sessions/coverage-overlays-2026-11-05-batch658.md. */
+typedef void *(*Destroy)(void *);extern void FUN_02037848(void *),FUN_020ba8ac(void *);
+void *FUN_overlay_19__0219af70(unsigned *self){void *child;self[0]=0x0219d378;child=(void *)self[12];if(child){if(child)((*(Destroy **)child)[4])(child);self[12]=0;}child=(void *)self[22];if(child){if(child)((*(Destroy **)child)[4])(child);self[22]=0;}child=(void *)self[23];if(child){if(child)((*(Destroy **)child)[4])(child);self[23]=0;}child=(void *)self[24];if(child){if(child)((*(Destroy **)child)[4])(child);self[24]=0;}child=(void *)self[13];if(child){if(child)((*(Destroy **)child)[4])(child);self[13]=0;}child=(void *)self[14];if(child){if(child)((*(Destroy **)child)[4])(child);self[14]=0;}child=(void *)self[15];if(child){if(child)((*(Destroy **)child)[4])(child);self[15]=0;}child=(void *)self[16];if(child){if(child)((*(Destroy **)child)[4])(child);self[16]=0;}child=(void *)self[17];if(child){if(child)((*(Destroy **)child)[4])(child);self[17]=0;}child=(void *)self[18];if(child){if(child)((*(Destroy **)child)[4])(child);self[18]=0;}child=(void *)self[19];if(child){if(child)((*(Destroy **)child)[4])(child);self[19]=0;}child=(void *)self[20];if(child){if(child)((*(Destroy **)child)[4])(child);self[20]=0;}child=(void *)self[21];if(child){if(child)((*(Destroy **)child)[4])(child);self[21]=0;}FUN_02037848(self);FUN_020ba8ac(self);return self;}

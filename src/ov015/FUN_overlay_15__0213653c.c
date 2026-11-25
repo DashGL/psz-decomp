@@ -1,0 +1,7 @@
+// FUN_overlay_15__0213653c @ 0x0213653c (code 0xf6, pool extent 0x114, thumb)
+// flags: -O4,p
+/* USA overlay 15 reconstruction from extracted module bytes, 2026-11-04.
+ * Update the selected display window layer mask and color-effect bit while preserving other register fields.
+ * Field identities remain provisional.
+ */
+void FUN_overlay_15__0213653c(int display,unsigned int window,unsigned int mask,int effect) {unsigned int bits;volatile unsigned short *reg;switch(window){case 0:if(display==1){reg=(volatile unsigned short *)0x04001048;bits=(*reg&~63u)|(mask<<0);if(effect)bits|=32;*reg=(unsigned short)bits;}else{reg=(volatile unsigned short *)0x04000048;bits=(*reg&~63u)|(mask<<0);if(effect)bits|=32;*reg=(unsigned short)bits;}break;case 1:if(display==1){reg=(volatile unsigned short *)0x04001048;bits=(*reg&~16128u)|(mask<<8);if(effect)bits|=8192;*reg=(unsigned short)bits;}else{reg=(volatile unsigned short *)0x04000048;bits=(*reg&~16128u)|(mask<<8);if(effect)bits|=8192;*reg=(unsigned short)bits;}break;case 2:if(display==1){reg=(volatile unsigned short *)0x0400104a;bits=(*reg&~16128u)|(mask<<8);if(effect)bits|=8192;*reg=(unsigned short)bits;}else{reg=(volatile unsigned short *)0x0400004a;bits=(*reg&~16128u)|(mask<<8);if(effect)bits|=8192;*reg=(unsigned short)bits;}break;case 3:if(display==1){reg=(volatile unsigned short *)0x0400104a;bits=(*reg&~63u)|(mask<<0);if(effect)bits|=32;*reg=(unsigned short)bits;}else{reg=(volatile unsigned short *)0x0400004a;bits=(*reg&~63u)|(mask<<0);if(effect)bits|=32;*reg=(unsigned short)bits;}break;}}

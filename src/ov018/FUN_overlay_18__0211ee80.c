@@ -1,0 +1,11 @@
+// FUN_overlay_18__0211ee80 @ 0x0211ee80 (0x34, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch46.json; original draft retained for referenced provenance.
+// FUN_overlay_18__0211ee80 @ 0x0211ee80 (code 0x30, pool extent 0x34, thumb)
+// check: vers=2.0/sp2p3 target=0x34 candidate=0x34 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+/* USA overlay 18 reconstruction from extracted module bytes, 2026-11-04.
+ * Emit feedback for nonnegative identifier and alternate signed channel remainder.
+ * Field identities remain provisional.
+ */
+extern void FUN_020c193c(int,int,int,int,int);
+void FUN_overlay_18__0211ee80(void *unused,int id) {if(id>=0){FUN_020c193c(id,*(int *)0x02124540,0,0,-1);*(int *)0x02124540=(*(int *)0x02124540+1)%2;}}

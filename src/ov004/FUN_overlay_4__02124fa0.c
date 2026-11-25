@@ -1,0 +1,7 @@
+// FUN_overlay_4__02124fa0 @ 0x02124fa0 (0x158, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch42.json; original draft retained for referenced provenance.
+// FUN_overlay_4__02124fa0 @ 0x02124fa0 (0x158, Thumb)
+// check: vers=2.0/sp2p3 target=0x158 candidate=0x158 words=0 exact_bytes=0 bad_relocs=0
+// Navigate list one or five entries, wrap and maintain five-row viewport, then update selected descriptor.
+extern int FUN_020bbf94(unsigned int),FUN_020bbfa8(unsigned int);extern void FUN_020c193c(int,int,int,int,int),FUN_02088e10(void *,void *,int,int);extern void *FUN_02088c7c(void);extern char data_02195f90[],data_021965d0[];
+void FUN_overlay_4__02124fa0(int *self,int *index,int *top,int count){int changed=0,delta;if(FUN_020bbf94(128)){if(FUN_020bbfa8(1024)){*index+=5;if(*index>=count+4)*index=0;if(*index>count)*index=count-1;}else (*index)++;changed=1;}else if(FUN_020bbf94(64)){if(FUN_020bbfa8(1024)){*index-=5;if(*index==-5)*index=count-1;if(*index<0)*index=0;}else (*index)--;changed=1;}if(*index>=count)*index=0;if(*index<0)*index=count-1;self[23]=*top;delta=*index-*top;if(delta>=5)*top=*index-4;if(delta<0)*top=*index;if(*top<0)*top=4;if(count==0){*index=0;*top=0;}if(self[23]!=*top)self[47]&=~4;if(changed){FUN_020c193c(0,2,0,0,-1);if(self[0]==10)FUN_02088e10(FUN_02088c7c(),data_02195f90+*index*20,0,-1);else if(self[0]==3)FUN_02088e10(FUN_02088c7c(),data_021965d0+self[25]*1600+*index*20,0,-1);self[47]&=~4;}}

@@ -1,0 +1,36 @@
+ARM9 overlay functions (Ghidra): per-module live/dead classification
+
+ov000: fns    8 (+0 beyond code_size) | call-reachable    6 | indirect   0 | dead    2 | live ~  2KB of   4KB | islands   2 largest    1 | zero-caller 2 | roots ctor=1 base=0 ext=0
+ov001: fns    3 (+0 beyond code_size) | call-reachable    3 | indirect   0 | dead    0 | live ~  0KB of   0KB | islands   0 largest    0 | zero-caller 0 | roots ctor=0 base=1 ext=3
+ov002: fns    4 (+0 beyond code_size) | call-reachable    1 | indirect   0 | dead    3 | live ~  0KB of   1KB | islands   1 largest    3 | zero-caller 1 | roots ctor=1 base=0 ext=0
+ov003: fns   12 (+0 beyond code_size) | call-reachable   10 | indirect   0 | dead    2 | live ~  1KB of   2KB | islands   2 largest    1 | zero-caller 2 | roots ctor=1 base=0 ext=0
+ov004: fns  269 (+0 beyond code_size) | call-reachable  220 | indirect   0 | dead   49 | live ~ 51KB of  65KB | islands   2 largest   31 | zero-caller 0 | roots ctor=1 base=0 ext=17
+ov005: fns    7 (+0 beyond code_size) | call-reachable    7 | indirect   0 | dead    0 | live ~  1KB of   1KB | islands   0 largest    0 | zero-caller 0 | roots ctor=1 base=0 ext=0
+ov006: fns   29 (+0 beyond code_size) | call-reachable   29 | indirect   0 | dead    0 | live ~ 20KB of  20KB | islands   0 largest    0 | zero-caller 0 | roots ctor=1 base=1 ext=3
+ov007: fns   50 (+0 beyond code_size) | call-reachable   50 | indirect   0 | dead    0 | live ~  6KB of   6KB | islands   0 largest    0 | zero-caller 0 | roots ctor=1 base=1 ext=3
+ov008: fns    6 (+0 beyond code_size) | call-reachable    2 | indirect   0 | dead    4 | live ~  0KB of   2KB | islands   1 largest    4 | zero-caller 0 | roots ctor=1 base=1 ext=1
+ov009: fns   78 (+0 beyond code_size) | call-reachable   76 | indirect   0 | dead    2 | live ~  7KB of  10KB | islands   1 largest    2 | zero-caller 0 | roots ctor=1 base=1 ext=4
+ov010: fns  155 (+0 beyond code_size) | call-reachable  155 | indirect   0 | dead    0 | live ~ 17KB of  17KB | islands   0 largest    0 | zero-caller 0 | roots ctor=1 base=1 ext=3
+ov011: fns  192 (+0 beyond code_size) | call-reachable  192 | indirect   0 | dead    0 | live ~ 25KB of  25KB | islands   0 largest    0 | zero-caller 0 | roots ctor=2 base=1 ext=3
+ov012: fns  954 (+0 beyond code_size) | call-reachable  950 | indirect   0 | dead    4 | live ~129KB of 129KB | islands   1 largest    4 | zero-caller 0 | roots ctor=2 base=1 ext=10
+ov013: fns   34 (+0 beyond code_size) | call-reachable   34 | indirect   0 | dead    0 | live ~  5KB of   5KB | islands   0 largest    0 | zero-caller 0 | roots ctor=1 base=1 ext=3
+ov014: fns  121 (+0 beyond code_size) | call-reachable  121 | indirect   0 | dead    0 | live ~ 14KB of  14KB | islands   0 largest    0 | zero-caller 0 | roots ctor=1 base=1 ext=3
+ov015: fns  728 (+0 beyond code_size) | call-reachable  560 | indirect   0 | dead  168 | live ~ 68KB of 119KB | islands   1 largest  168 | zero-caller 1 | roots ctor=0 base=1 ext=6
+ov016: fns  139 (+0 beyond code_size) | call-reachable   80 | indirect   0 | dead   59 | live ~ 11KB of  62KB | islands  16 largest   32 | zero-caller 22 | roots ctor=2 base=1 ext=4
+ov017: fns  238 (+0 beyond code_size) | call-reachable  198 | indirect   0 | dead   40 | live ~ 25KB of  33KB | islands   1 largest   40 | zero-caller 1 | roots ctor=1 base=1 ext=1
+ov018: fns  189 (+0 beyond code_size) | call-reachable  189 | indirect   0 | dead    0 | live ~ 23KB of  23KB | islands   0 largest    0 | zero-caller 0 | roots ctor=2 base=0 ext=2
+ov019: fns  213 (+0 beyond code_size) | call-reachable  213 | indirect   0 | dead    0 | live ~ 21KB of  21KB | islands   0 largest    0 | zero-caller 0 | roots ctor=8 base=1 ext=1
+ov020: fns  213 (+0 beyond code_size) | call-reachable  213 | indirect   0 | dead    0 | live ~ 31KB of  31KB | islands   0 largest    0 | zero-caller 0 | roots ctor=23 base=1 ext=2
+ov021: fns  231 (+0 beyond code_size) | call-reachable  231 | indirect   0 | dead    0 | live ~ 38KB of  38KB | islands   0 largest    0 | zero-caller 0 | roots ctor=37 base=1 ext=1
+ov022: fns  274 (+0 beyond code_size) | call-reachable  274 | indirect   0 | dead    0 | live ~ 37KB of  37KB | islands   0 largest    0 | zero-caller 0 | roots ctor=4 base=1 ext=2
+ov023: fns  215 (+0 beyond code_size) | call-reachable  214 | indirect   0 | dead    1 | live ~ 23KB of  23KB | islands   1 largest    1 | zero-caller 1 | roots ctor=19 base=0 ext=3
+ov024: fns  265 (+0 beyond code_size) | call-reachable  265 | indirect   0 | dead    0 | live ~ 18KB of  18KB | islands   0 largest    0 | zero-caller 0 | roots ctor=18 base=1 ext=8
+ov025: fns  156 (+0 beyond code_size) | call-reachable  156 | indirect   0 | dead    0 | live ~ 12KB of  12KB | islands   0 largest    0 | zero-caller 0 | roots ctor=8 base=0 ext=5
+ov026: fns  226 (+0 beyond code_size) | call-reachable  223 | indirect   0 | dead    3 | live ~ 14KB of  14KB | islands   3 largest    1 | zero-caller 3 | roots ctor=18 base=1 ext=8
+ov027: fns  218 (+0 beyond code_size) | call-reachable  218 | indirect   0 | dead    0 | live ~ 18KB of  18KB | islands   0 largest    0 | zero-caller 0 | roots ctor=18 base=1 ext=5
+ov028: fns  228 (+0 beyond code_size) | call-reachable  228 | indirect   0 | dead    0 | live ~ 17KB of  17KB | islands   0 largest    0 | zero-caller 0 | roots ctor=14 base=0 ext=6
+ov029: fns  196 (+0 beyond code_size) | call-reachable  196 | indirect   0 | dead    0 | live ~ 16KB of  16KB | islands   0 largest    0 | zero-caller 0 | roots ctor=11 base=0 ext=3
+ov030: fns  166 (+0 beyond code_size) | call-reachable  166 | indirect   0 | dead    0 | live ~ 12KB of  12KB | islands   0 largest    0 | zero-caller 0 | roots ctor=8 base=0 ext=3
+ov031: fns  213 (+0 beyond code_size) | call-reachable  213 | indirect   0 | dead    0 | live ~ 20KB of  20KB | islands   0 largest    0 | zero-caller 0 | roots ctor=15 base=0 ext=1
+
+TOTAL: functions 6030 | live 5693 | dead 337 | live ~694KB of 828KB code

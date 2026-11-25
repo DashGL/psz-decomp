@@ -1,0 +1,10 @@
+// The third argument is numeric: concrete v48 stores its low byte at receiver+0x141.
+// Helper classes scoped to this function; machine code and relocations rechecked 2026-11-12.
+// Verified 2026-11-12: pinned 2.0/sp2p3, full extent 0xa0, exact bytes and relocation targets.
+// FUN_0203db2c @ 0x0203db2c
+// check: 2.0/sp2p3 target=0xa0 candidate=0xa0 words=0 exact_bytes=0 bad_relocs=0
+// flags: -O4,s
+//cpp
+struct O_FUN_0203db2c { virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3(); virtual void v4(); virtual void v5(); virtual void v6(); virtual void v7(); virtual void v8(); virtual void v9(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28(); virtual int v29(void *,unsigned int); virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36(); virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41(); virtual void v42(); virtual void v43(); virtual void v44(); virtual void v45(); virtual void v46(); virtual void v47(); virtual void v48(unsigned int,unsigned int); virtual int v49(); };
+extern "C" int FUN_0204c5ec(void *),FUN_020390f4(void *);extern "C" char *FUN_020384a4(void *,unsigned int);extern "C" void FUN_02039038(void *,unsigned int,unsigned int),FUN_02070870(void *,void *);
+extern "C" void FUN_0203db2c(O_FUN_0203db2c *o,unsigned int value,unsigned int context){char *s=(char *)o;unsigned int out[3];char *p=*(char **)(s+432);if(!p||!*(void **)(p+20)||FUN_0204c5ec(*(void **)(p+20)))return;*(unsigned short *)(s+192)=value;if(*(int *)(s+576)==9||FUN_020390f4(s))return;o->v48(value,context);p=FUN_020384a4(s,*(unsigned int *)(s+208));s[513]=0;if(p&&(unsigned char)p[8]!=255)FUN_02039038(s,0,0x0206f055);if(!o->v49()&&o->v29(out,context)==1)FUN_02070870(s,out);}

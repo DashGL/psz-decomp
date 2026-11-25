@@ -1,0 +1,7 @@
+// FUN_overlay_7__0211f964 @ 0x0211f964 (0xa8, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch36.json; original draft retained for referenced provenance.
+// FUN_overlay_7__0211f964 @ 0x0211f964 (0xa8, Thumb)
+// check: vers=2.0/sp2p3 target=0xa8 candidate=0xa8 words=0 exact_bytes=0 bad_relocs=0
+// Bracket drawing state, render mode-specific menu, publish selection and run requested transition; return zero.
+typedef struct {unsigned short h[4];int xy[2];} Draw;extern void FUN_020144f0(void),FUN_02014714(void),FUN_02071d0c(void *),FUN_02090b44(void *),FUN_020c32b4(void *,unsigned int),FUN_overlay_7__0211fa0c(void *,int,int),FUN_overlay_7__0211fa5c(void *,int),FUN_overlay_7__0211e64c(int),FUN_overlay_7__0211f5c0(void *),FUN_overlay_7__0211f7a0(void *),FUN_overlay_7__0211f680(void *);extern int FUN_overlay_7__0211fc38(void *);
+int FUN_overlay_7__0211f964(int *self){Draw draw;int selected,next;FUN_020144f0();FUN_02071d0c(&draw);FUN_02090b44(&draw);draw.xy[0]=0;draw.xy[1]=0x5000;draw.h[0]=2;FUN_020c32b4(&draw,self[36]);if(self[39]==0){selected=self[1];FUN_overlay_7__0211fa0c(self,selected,FUN_overlay_7__0211fc38(self));}else{FUN_overlay_7__0211fa0c(self,-1,1);FUN_overlay_7__0211fa5c(self,self[1]);}FUN_02014714();FUN_overlay_7__0211e64c(self[1]);next=self[41];if(next!=self[39]){switch(next){case 0:FUN_overlay_7__0211f5c0(self);break;case 2:FUN_overlay_7__0211f7a0(self);break;case 1:FUN_overlay_7__0211f680(self);break;}}return 0;}

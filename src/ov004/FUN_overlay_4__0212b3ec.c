@@ -1,0 +1,5 @@
+// flags: -O4,s
+// FUN_overlay_4__0212b3ec @ 0x0212b3ec (0x94, Thumb)
+// Refresh changed name, draw valid type icon and apply two record-specific presentation properties.
+typedef struct {unsigned short h[4];} Icons;extern const Icons data_0212e4b0;extern void FUN_020c38f0(void *,int),FUN_020c3788(void *,const signed char *,int,int,unsigned int),FUN_020c331c(unsigned int,int,int,unsigned int),FUN_overlay_4__02129998(void *,int,int),FUN_overlay_4__021299fc(void *,int,void *);extern void *FUN_0208bda0(void);
+void FUN_overlay_4__0212b3ec(char *self,char *record){Icons icons;int kind;if(!*(int *)(self+4)||*(int *)(self+112)!=*(int *)(record+20)){*(int *)(self+4)=1;FUN_020c38f0(*(void **)self,0);FUN_020c3788(*(void **)self,(signed char *)record,0,0,2);}kind=*(int *)(record+24);if(kind>=0&&kind<=3){icons=data_0212e4b0;FUN_020c331c(32,0x8000,0x13f000,*(unsigned int *)(self+8));FUN_020c331c(icons.h[*(int *)(record+24)],0x26000,0x13f000,*(unsigned int *)(self+8));}FUN_overlay_4__02129998(FUN_0208bda0(),5,*(int *)(record+28));FUN_overlay_4__021299fc(FUN_0208bda0(),5,record+32);}

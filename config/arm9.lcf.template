@@ -1,0 +1,47 @@
+MEMORY \{
+    {{ for module in modules -}}
+    {module.name} : ORIGIN = {module.origin} > {module.output_file}
+    {{ endfor }}
+    SPACE : ORIGIN = AFTER(
+        {{- for module in modules -}}
+            {{- if not module.in_tcm -}}
+                {{- if not @first -}}, {{ endif -}}
+                {module.name}
+            {{- endif -}}
+        {{- endfor -}}
+    )
+}
+
+KEEP_SECTION \{
+    .init,
+    .ctor,
+    .exceptix
+}
+
+SECTIONS \{
+    {{ for overlay in overlays -}}
+    {overlay.id_symbol} = {overlay.id};
+    {{ endfor }}
+
+    {{ for variable in variables -}}
+    {variable.symbol} = {variable.value};
+    {{ endfor }}
+
+    {{ for module in modules -}}
+    {module.link_section} : \{
+        ALIGNALL(2);
+        {{ for section in module.sections -}}
+        . = ALIGN({section.alignment});
+        {section.start_symbol} = .;
+        {{ for file in section.files -}}
+        {file.name}({file.section_name})
+        {{ endfor }}
+        {{ if section.append_zero }}WRITEW(0);{{ endif }}
+        {{ if section.exceptix }}EXCEPTION{{ endif }}
+        . = ALIGN({section.end_alignment});
+        {section.end_symbol} = .;
+        {{ endfor }}
+    } > {module.name}
+
+    {{ endfor }}
+}

@@ -1,0 +1,7 @@
+// FUN_overlay_4__02129ca8 @ 0x02129ca8 (0xbc, thumb) - full bytes and relocation targets verified.
+// Promotion evidence: notes/sessions/matching-low-2026-11-07-batch42.json; original draft retained for referenced provenance.
+// FUN_overlay_4__02129ca8 @ 0x02129ca8 (0xbc, Thumb)
+// check: vers=2.0/sp2p3 target=0xbc candidate=0xbc words=0 exact_bytes=0 bad_relocs=0
+// Prepare oriented marker in allowed scene states, reload its resource, and always clear pending global flag.
+extern void *data_02108c64;extern char data_0212eb78[];extern int data_02197f28[];extern void *FUN_02072af0(void),*FUN_020c1fc8(void);extern unsigned int FUN_02032854(void *);extern void FUN_overlay_4__02129bf0(void *),FUN_020c2624(void *,void *);extern int FUN_020c247c(void *,const char *,unsigned int);
+void FUN_overlay_4__02129ca8(char *self){unsigned int x,y;unsigned short angle;if(*(int *)((char *)FUN_02072af0()+8)==0||*(int *)((char *)FUN_02072af0()+8)==10){x=*(unsigned int *)(self+784)<<12;y=*(unsigned int *)(self+788)<<12;FUN_overlay_4__02129bf0(self+4);*(unsigned int *)(self+12)=x;*(unsigned int *)(self+16)=y;*(unsigned short *)(self+6)=0U-FUN_02032854(data_02108c64);*(int *)(self+20)=1;angle=*(unsigned short *)(self+6);if(angle==0x4000)*(unsigned int *)(self+12)-=4096;else if(angle==0x8000){*(unsigned int *)(self+12)-=4096;*(unsigned int *)(self+16)-=4096;}else if(angle==0xc000)*(unsigned int *)(self+16)-=4096;if(*(int *)(self+800)!=-1)FUN_020c2624(FUN_020c1fc8(),self+800);*(int *)(self+800)=FUN_020c247c(FUN_020c1fc8(),data_0212eb78,2);}data_02197f28[1]=0;}
